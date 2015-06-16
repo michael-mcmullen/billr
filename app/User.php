@@ -32,4 +32,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * a user can have many companies
+     */
+    public function companies()
+    {
+        return $this->hasMany('App\Company');
+    }
 }
