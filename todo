@@ -1,5 +1,9 @@
 [ Next Stream ]
- > add bill
+ > bill listing
+ > bill due listing
+ > bill due widget
+ > edit bill
+ > delete bill
 
 @ TEMP
  > change routes.php > /bill to normal
@@ -12,4 +16,4 @@
 
 [ Later ]
  > implement SweetAlert (http://t4t5.github.io/sweetalert/)
- > refactor Loading of Company
+ > write part of read me

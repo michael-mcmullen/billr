@@ -20,7 +20,8 @@ class Bill extends Model
      * @var array
      */
     protected $fillable = [ 'company_id', 'amount', 'received', 'due',
-                            'paid', 'paid_amount', 'paid_date'];
+                            'paid', 'paid_amount', 'paid_date',
+                            'reference_number' ];
 
     /**
      * The attributes excluded from the model's JSON form.
