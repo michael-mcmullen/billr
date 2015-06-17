@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
@@ -19,7 +20,7 @@ class Company extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'name', 'account_number'];
+    protected $fillable = ['user_id', 'name', 'account_number', 'active'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -42,5 +43,17 @@ class Company extends Model
     public function bills()
     {
         return $this->hasMany('App\Bill');
+    }
+
+    public static function loadCompany($id)
+    {
+        $company = Company::find($id);
+
+        if(intval(Auth::id()) !== intval($company->user_id))
+        {
+            $company = null;
+        }
+
+        return $company;
     }
 }

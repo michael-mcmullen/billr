@@ -18,7 +18,7 @@ class CreateTableBills extends Migration
             $table->decimal('amount', 12, 2);
             $table->date('received');
             $table->date('due');
-            $table->boolean('paid')->nullable();
+            $table->boolean('paid')->default(0);
             $table->decimal('paid_amount', 12, 2)->nullable();
             $table->date('paid_date')->nullable();
             $table->timestamps();

@@ -20,6 +20,34 @@ Route::group(['prefix' => 'company'], function(){
         'as'   => 'company.insert',
         'uses' => 'CompanyController@insert')
     );
+    Route::get('/edit/{id}', array(
+        'as'   => 'company.edit',
+        'uses' => 'CompanyController@edit')
+    );
+    Route::post('/update', array(
+        'as'   => 'company.update',
+        'uses' => 'CompanyController@update')
+    );
+    Route::get('/delete/{id}', array(
+        'as'   => 'company.delete',
+        'uses' => 'CompanyController@delete')
+    );
+});
+
+// BILL
+Route::group(['prefix' => 'bill'], function(){
+    Route::get('/', array(
+        'as'   => 'bill',
+        'uses' => 'HomeController@index')
+    );
+    Route::get('/add', array(
+        'as'   => 'bill.add',
+        'uses' => 'BillController@add')
+    );
+    Route::post('/insert', array(
+        'as'   => 'bill.insert',
+        'uses' => 'BillController@insert')
+    );
 });
 
 // AUTHENTICATION

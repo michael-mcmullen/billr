@@ -1,10 +1,15 @@
 [ Next Stream ]
- > edit company
- > delete company
+ > add bill
+
+@ TEMP
+ > change routes.php > /bill to normal
+
 
 [ Tests ]
- > logout
- > add company
  > edit company
  > delete company
  > view company list ? (do i really need this)
+
+[ Later ]
+ > implement SweetAlert (http://t4t5.github.io/sweetalert/)
+ > refactor Loading of Company

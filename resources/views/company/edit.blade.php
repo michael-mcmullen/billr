@@ -16,24 +16,25 @@
 
             <div class="page-header">
                 <h1>
-                    Add Company <small>add a company to manage</small>
+                    Edit Company <small>edit the information about a company</small>
                 </h1>
             </div>
 
-            {!! Form::open(['route' => 'company.insert', 'autocomplete' => 'off']) !!}
+            {!! Form::open(['route' => 'company.update', 'autocomplete' => 'off']) !!}
+                <input type="hidden" name="id" value="{{ $company['id'] }}">
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        New Company
+                        Edit Company
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
                             <label for="company_name">Company Name</label>
-                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Example Co" value="{{ old('company_name') }}">
+                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Example Co" value="{{ old('company_name') ? old('company_name') : $company['name'] }}">
                         </div>
                         <div class="form-group">
                             <label for="account_number">Account Number</label>
-                            <input type="text" class="form-control" id="account_number" name="account_number" placeholder="1234-56748-94241" value="{{ old('account_number') }}">
+                            <input type="text" class="form-control" id="account_number" name="account_number" placeholder="1234-56748-94241" value="{{ old('account_number') ? old('account_number') : $company['account_number'] }}">
                         </div>
                     </div>
                     <div class="panel-footer">

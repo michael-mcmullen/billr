@@ -24,7 +24,7 @@ class HomeController extends Controller {
 
         foreach($companies as $company)
         {
-            $bills = $company->bills()->where('paid', false)->get()->lists('amount');
+            $bills = $company->bills()->where('paid', false)->where('active', true)->get()->lists('amount');
 
             foreach($bills as $amount)
             {

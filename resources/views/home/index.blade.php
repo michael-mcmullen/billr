@@ -40,14 +40,14 @@
     <div class="col-md-3">
       <div class="hero-widget well well-sm">
         <div class="icon">
-          <i class="glyphicon glyphicon-exclamation-sign"></i>
+          <i class="glyphicon glyphicon-exclamation-sign text-danger"></i>
         </div>
         <div class="text">
           <var><a href="#">{{ $unpaid['count'] }}</a></var>
           <label class="text-muted">unpaid bills (${{ number_format($unpaid['total'], 2) }})</label>
         </div>
         <div class="options">
-          <a href="javascript:;" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Bill</a>
+          <a href="{{ URL::route('bill.add') }}" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Bill</a>
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@
           <i class="glyphicon glyphicon-briefcase"></i>
         </div>
         <div class="text">
-          <var><a href="{{ URL::route('company') }}">{{ Auth::user()->companies()->count() }}</a></var>
+          <var><a href="{{ URL::route('company') }}">{{ Auth::user()->companies()->where('active', true)->count() }}</a></var>
           <label class="text-muted">companies</label>
         </div>
         <div class="options">
@@ -113,88 +113,6 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          New Company
-        </div>
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Company Name</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Example Co">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Account Number</label>
-              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="1234-56748-94241">
-            </div>
-          </form>
-        </div>
-        <div class="panel-footer">
-          <button class="btn btn-fresh text-uppercase">Save</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          New Bill
-        </div>
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Company</label>
-              <select name="" id="" class="form-control">
-                <option value="">My Awesome Company</option>
-                <option value="">My Not So Awesome Company</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Amount</label>
-              <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="8457.24">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Due Date</label>
-              <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="2016-06-16">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Recurring</label>
-              <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-info btn-xs">
-                  <input type="checkbox" autocomplete="off">
-                  <span class="glyphicon glyphicon-ok"></span>
-                </label>
-              </div>
-              (will estimate the cost, next month)
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Reminder Date</label>
-              <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="2016-06-16">
-              </div>
-              (leave empty for no reminder)
-            </div>
-          </form>
-        </div>
-        <div class="panel-footer">
-          <button class="btn btn-fresh text-uppercase">Save</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <div class="container">
   <div class="row">
