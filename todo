@@ -1,0 +1,10 @@
+[ Next Stream ]
+ > edit company
+ > delete company
+
+[ Tests ]
+ > logout
+ > add company
+ > edit company
+ > delete company
+ > view company list ? (do i really need this)

@@ -6,6 +6,22 @@ Route::get('/', [
     'uses' => 'HomeController@index'
 ]);
 
+// COMPANY
+Route::group(['prefix' => 'company'], function(){
+    Route::get('/', array(
+        'as'   => 'company',
+        'uses' => 'CompanyController@index')
+    );
+    Route::get('/add', array(
+        'as'   => 'company.add',
+        'uses' => 'CompanyController@add')
+    );
+    Route::post('/insert', array(
+        'as'   => 'company.insert',
+        'uses' => 'CompanyController@insert')
+    );
+});
+
 // AUTHENTICATION
 Route::group(['prefix' => 'auth'], function() {
     // Authentication routes...
