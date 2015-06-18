@@ -34,7 +34,14 @@ class BillController extends Controller {
 
     public function index()
     {
+        $overdueBills = \App\Bill::before(date('Y-m-d'), false);
+        $nextBills    = \App\Bill::next(30, false);
+        $futureBills  = \App\Bill::after(30, false);
 
+        return view('bill.index')
+            ->with('overdueBills', $overdueBills)
+            ->with('nextBills', $nextBills)
+            ->with('futureBills', $futureBills);
     }
 
     public function add()
@@ -43,7 +50,7 @@ class BillController extends Controller {
     }
 
     /**
-     * try to insert the company if validation passes
+     * try to insert the bill if validation passes
      * @param  Request $request [description]
      */
     public function insert(Request $request)
@@ -52,7 +59,7 @@ class BillController extends Controller {
         $this->validate($request, $this->validationRules, $this->validationMessages);
 
         // validation passed, create the bill with the associated information
-        \App\Bill::create([
+        $bill = new \App\Bill([
             'company_id'       => $request->input('company_id'),
             'amount'           => $request->input('amount'),
             'received'         => $request->input('received'),
@@ -63,9 +70,12 @@ class BillController extends Controller {
             'reference_number' => $request->input('reference_number')
         ]);
 
+        // save the bill using eloquent (automatically insert the current logged in user)
+        Auth::user()->bills()->save($bill);
+
         Session::flash('success', ['The bill has been added successfully']);
 
-        return Redirect::route('company');
+        return Redirect::route('bill');
     }
 
     /**

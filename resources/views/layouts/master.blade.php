@@ -40,7 +40,11 @@
 
         <script>
             $(function(){
-                $(".alert").delay(5000).slideUp('slow');
+                $(".alert").each(function(idx, element){
+                    if(! $(this).hasClass('alert-no-close')) {
+                        $(this).delay(5000).slideUp('slow');
+                    }
+                });
             })
         </script>
 

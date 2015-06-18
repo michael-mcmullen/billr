@@ -37,21 +37,40 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-3">
+    <!-- OVER DUE -->
+    <div class="col-sm-4">
       <div class="hero-widget well well-sm">
         <div class="icon">
           <i class="glyphicon glyphicon-exclamation-sign text-danger"></i>
         </div>
         <div class="text">
-          <var><a href="#">{{ $unpaid['count'] }}</a></var>
-          <label class="text-muted">unpaid bills (${{ number_format($unpaid['total'], 2) }})</label>
+          <var><a href="{{ URL::route('bill') }}">{{ $overdueBills->count() }}</a></var>
+          <label class="text-muted">overdue bills (${{ number_format($overdueBills->sum('amount'), 2) }})</label>
+        </div>
+        <div class="options">
+          <a href="{{ URL::route('bill') }}" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> View Bills</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DUE IN 30 -->
+    <div class="col-sm-4">
+      <div class="hero-widget well well-sm">
+        <div class="icon">
+          <i class="glyphicon glyphicon-warning-sign"></i>
+        </div>
+        <div class="text">
+          <var><a href="{{ URL::route('bill') }}">{{ $nextUnpaidBills->count() }}</a></var>
+          <label class="text-muted">due in 30 days (${{ number_format($nextUnpaidBills->sum('amount'), 2) }})</label>
         </div>
         <div class="options">
           <a href="{{ URL::route('bill.add') }}" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Bill</a>
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+
+    <!-- COMPANIES -->
+    <div class="col-sm-4">
       <div class="hero-widget well well-sm">
         <div class="icon">
           <i class="glyphicon glyphicon-briefcase"></i>
@@ -62,34 +81,6 @@
         </div>
         <div class="options">
           <a href="{{ URL::route('company.add') }}" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Company</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="hero-widget well well-sm">
-        <div class="icon">
-          <i class="glyphicon glyphicon-briefcase"></i>
-        </div>
-        <div class="text">
-          <var>${{ number_format($thisMonth['total'], 2) }}</var>
-          <label class="text-muted">spent this month</label>
-        </div>
-        <div class="options">
-          <a href="javascript:;" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> View</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="hero-widget well well-sm">
-        <div class="icon">
-          <i class="glyphicon glyphicon-briefcase"></i>
-        </div>
-        <div class="text">
-          <var>$0.xx</var>
-          <label class="text-muted">spent last month</label>
-        </div>
-        <div class="options">
-          <a href="javascript:;" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> View</a>
         </div>
       </div>
     </div>
@@ -108,38 +99,6 @@
           <canvas id="myLineChart"></canvas>
         </div>
 
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="well well-sm">
-        <div class="row">
-          <div class="col-sm-3 text-center">
-            <div class="date">
-              <div class="month">June</div>
-              <div class="day">16, 2015</div>
-            </div>
-          </div>
-          <div class="col-sm-9 bill-content">
-            <p class="company">
-              My Not So Awesome Company
-            </p>
-            <p class="amount">
-              Transaction: $<span class="dollar">1,453.24</span>
-            </p>
-            <p class="account">
-              Account: 1548-98745-35-4824
-            </p>
-          </div>
-          <div class="col-sm-12">
-            <a href="#" class="btn btn-fresh text-uppercase btn-block"><span class="fa fa-check"></span> Mark this bill as paid</a>
-          </div>
-        </div>
       </div>
     </div>
   </div>

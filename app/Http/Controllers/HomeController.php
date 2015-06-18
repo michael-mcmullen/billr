@@ -15,6 +15,17 @@ class HomeController extends Controller {
 
     public function index()
     {
+        $overdueBills    = \App\Bill::before(date('Y-m-d'), false);
+        $nextUnpaidBills = \App\Bill::next(30, false);
+        $nextPaidBills   = \App\Bill::next(30, true);
+        $lastPaidBills   = \App\Bill::before(date('Y-m-d'), true);
+
+        return view('home.index')
+            ->with('overdueBills', $overdueBills)
+            ->with('nextUnpaidBills', $nextUnpaidBills)
+            ->with('nextPaidBills', $nextPaidBills)
+            ->with('lastPaidBills', $lastPaidBills);
+
         // REFACTOR LATER AFTER ALL WORKING
         // ***************************************
         // unpaid bills

@@ -38,7 +38,7 @@ Route::group(['prefix' => 'company'], function(){
 Route::group(['prefix' => 'bill'], function(){
     Route::get('/', array(
         'as'   => 'bill',
-        'uses' => 'HomeController@index')
+        'uses' => 'BillController@index')
     );
     Route::get('/add', array(
         'as'   => 'bill.add',

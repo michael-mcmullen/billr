@@ -15,23 +15,11 @@
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
       <ul class="nav navbar-nav">
         <li><a href="{{ URL::route('home') }}">Home</a></li>
-        <li class="dropdown">
-            <a href="{{ URL::route('bill') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bills <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ URL::route('company.add') }}"><i class="fa fa-plus"></i> Add</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="{{ URL::route('company') }}"><i class="fa fa-briefcase"></i> Listing</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="{{ URL::route('company') }}"><i class="fa fa-exclamation-circle text-danger"></i> Unpaid</a></li>
-            </ul>
+        <li>
+            <a href="{{ URL::route('bill') }}">Bills</a>
         </li>
-        <li class="dropdown">
-            <a href="{{ URL::route('company') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Companies <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ URL::route('company.add') }}"><i class="fa fa-plus"></i> Add</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="{{ URL::route('company') }}"><i class="fa fa-briefcase"></i> Listing</a></li>
-            </ul>
+        <li>
+            <a href="{{ URL::route('company') }}">Companies</a>
         </li>
         <li><a href="#">Reports</a></li>
       </ul>
