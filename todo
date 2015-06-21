@@ -4,7 +4,10 @@
  > bill due widget
  > edit bill
  > delete bill
- > skin LOGIN/REGISTER
+ > forgot password
+
+ BUG
+  > when a bill's due date is one day before it is considered over due, and it shouldn't be
 
 @ TEMP
  > change routes.php > /bill to normal
