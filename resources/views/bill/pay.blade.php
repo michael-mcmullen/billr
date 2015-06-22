@@ -3,22 +3,16 @@
 @section('javascript')
     <script>
         $(function(){
-            $("#due_date").datepicker({
-                format: "yyyy-mm-dd",
-                todayBtn: "linked",
-                autoclose: true
-            });
-            $("#received").datepicker({
-                format: "yyyy-mm-dd",
-                todayBtn: "linked",
-                autoclose: true
-            });
             $("#paid_date").datepicker({
                 format: "yyyy-mm-dd",
                 todayBtn: "linked",
                 autoclose: true
             });
         });
+
+        function copyAmount(amount) {
+            $("#paid_amount").val(amount);
+        }
     </script>
 @stop
 
@@ -30,50 +24,49 @@
 
             <div class="page-header">
                 <h1>
-                    Add Bill <small>add a bill to track</small>
+                    Pay Bill <small>complete the form below to pay your bill</small>
                 </h1>
             </div>
 
-            {!! Form::open(['route' => 'bill.insert', 'autocomplete' => 'off']) !!}
+            {!! Form::open(['route' => ['bill.paid', $bill['id']], 'autocomplete' => 'off']) !!}
 
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    New Bill
+                    Pay Bill
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="company_id">Company</label>
-                        {!! Form::select('company_id', Auth::user()->companies()->where('active', true)->get()->lists('name', 'id'), old('company_id'), ['class' => 'form-control', 'id' => 'company_id']) !!}
+                        <div class="input-group">
+                            {{ $bill->company['name'] }}
+                        </div>
                     </div>
                     {{-- /end COMPANY --}}
                     <div class="form-group">
                         <label for="amount">Amount</label>
                         <div class="input-group">
-                            <div class="input-group-addon">$</div>
-                            <input type="text" class="form-control" name="amount" id="amount" placeholder="1999.99" value="{{ old('amount') }}">
+                            ${{ number_format($bill->amount, 2) }}
                         </div>
                     </div>
                     {{-- /end AMOUNT --}}
                     <div class="form-group">
                         <label for="received">Receive On</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control" id="received" name="received" value="{{ old('received', date('Y-m-d')) }}">
+                            {{ date('F d, Y', strtotime($bill->received)) }}
                         </div>
                     </div>
                     {{-- /end RECEIVED ON --}}
                     <div class="form-group">
                         <label for="due_date">Due Date</label>
                         <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control" id="due_date" name="due_date" value="{{ old('due_date', date('Y-m-d')) }}">
+                            {{ date('F d, Y', strtotime($bill->due)) }}
                         </div>
                     </div>
                     {{-- /end PAID --}}
                     <div class="form-group">
-                        <label for="paid">Paid Amount</label>
-                        {!! Form::select('paid', [0 => 'No', 1 => 'Yes'], old('paid', 0), ['class' => 'form-control', 'id' => 'paid']) !!}
+                        <label for="paid">Paid</label>
+                        {!! Form::select('paid', [1 => 'Yes'], old('paid', 1), ['class' => 'form-control', 'id' => 'paid']) !!}
                     </div>
                     {{-- /end PAID AMOUNT --}}
                     <div class="form-group">
@@ -81,6 +74,9 @@
                         <div class="input-group">
                             <div class="input-group-addon">$</div>
                             <input type="text" class="form-control" name="paid_amount" id="paid_amount" placeholder="1999.99" value="{{ old('paid_amount') }}">
+                             <span class="input-group-btn">
+                                <a href="#" class="btn btn-inline btn-fresh" onclick="copyAmount('{{ $bill['amount'] }}'); return false;">Full Amount</a>
+                             </span>
                         </div>
                     </div>
                     {{-- /end PAID DATE --}}
@@ -88,7 +84,7 @@
                         <label for="paid_date">Paid Date</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                            <input type="text" class="form-control" name="paid_date" id="paid_date" value="{{ old('paid_date') }}">
+                            <input type="text" class="form-control" name="paid_date" id="paid_date" value="{{ old('paid_date', date('Y-m-d')) }}">
                         </div>
                     </div>
                     {{-- /end REFERENCE --}}
@@ -100,7 +96,7 @@
                 </div>
 
                 <div class="panel-footer">
-                    <input type="submit" class="btn btn-fresh btn-lg" value="Save Bill" onclick="switchElement(this, 'ajax-loading');">
+                    <input type="submit" class="btn btn-fresh btn-lg" value="Mark Bill as Paid" onclick="switchElement(this, 'ajax-loading');">
                     <a href="{{ URL::route('bill') }}" class="btn btn-hot" onclick="switchElement(this, 'ajax-loading');">Cancel</a>
                     <div id="ajax-loading" class="ajax-wait">
                         <img src="{{ asset('assets/images/spinner.gif') }}"> Please Wait ...

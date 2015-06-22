@@ -1,16 +1,8 @@
 [ Next Stream ]
- > bill listing
- > bill due listing
- > bill due widget
- > edit bill
- > delete bill
  > forgot password
 
  BUG
   > when a bill's due date is one day before it is considered over due, and it shouldn't be
-
-@ TEMP
- > change routes.php > /bill to normal
 
 
 [ Tests ]

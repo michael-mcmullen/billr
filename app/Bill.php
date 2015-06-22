@@ -52,6 +52,20 @@ class Bill extends Model
         return $this->belongsTo('App\Company');
     }
 
+    public static function loadBill($id)
+    {
+        $bill = array();
+
+        $bill = Bill::find($id);
+
+        if(Auth::id() != $bill['user_id'])
+        {
+            return array();
+        }
+
+        return $bill;
+    }
+
 
     /**
      * returns the bills between the given time periods for the current logged in user
@@ -62,7 +76,7 @@ class Bill extends Model
      */
     public static function between($dateStart, $dateStop, $paid)
     {
-        $bills = Auth::user()->bills()->where('paid', $paid)->whereBetween('due', [$dateStart, $dateStop])->orderBy('due')->get();
+        $bills = Auth::user()->bills()->where('active', true)->where('paid', $paid)->whereBetween('due', [$dateStart, $dateStop])->orderBy('due')->get();
 
         return $bills;
     }
@@ -78,7 +92,7 @@ class Bill extends Model
         $dateStart = date('Y-m-d');
         $dateStop  = date('Y-m-d', strtotime("+$days days"));
 
-        $bills = Auth::user()->bills()->where('paid', $paid)->whereBetween('due', [$dateStart, $dateStop])->orderBy('due')->get();
+        $bills = Auth::user()->bills()->where('active', true)->where('paid', $paid)->whereBetween('due', [$dateStart, $dateStop])->orderBy('due')->get();
 
         return $bills;
     }
@@ -93,7 +107,7 @@ class Bill extends Model
     {
         $dateStart  = date('Y-m-d', strtotime("-$days days"));
 
-        $bills = Auth::user()->bills()->where('paid', $paid)->where('due', '<=', $dateStart)->orderBy('due')->get();
+        $bills = Auth::user()->bills()->where('active', true)->where('paid', $paid)->where('due', '<=', $dateStart)->orderBy('due')->get();
 
         return $bills;
     }
@@ -108,7 +122,7 @@ class Bill extends Model
     {
         $dateStart = date('Y-m-d', strtotime("+$days days"));
 
-        $bills = Auth::user()->bills()->where('paid', $paid)->where('due', '>', $dateStart)->orderBy('due')->get();
+        $bills = Auth::user()->bills()->where('active', true)->where('paid', $paid)->where('due', '>', $dateStart)->orderBy('due')->get();
 
         return $bills;
     }
@@ -121,6 +135,6 @@ class Bill extends Model
      */
     public static function before($dateStart, $paid)
     {
-        return Auth::user()->bills()->where('paid', $paid)->where('due', '<=', $dateStart)->orderBy('due')->get();
+        return Auth::user()->bills()->where('active', true)->where('paid', $paid)->where('due', '<=', $dateStart)->orderBy('due')->get();
     }
 }

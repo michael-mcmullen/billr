@@ -8,6 +8,9 @@
 <!-- Overdue Bills -->
 <div class="container">
     <div class="row">
+
+        @include('layouts.partials.messages')
+
         <div class="col-md-12">
             <div class="page-header">
                 <div class="btn-group pull-right">

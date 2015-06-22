@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="well well-sm">
             <div class="row">
-                <div class="col-xs-3 text-center">
+                <div class="col-sm-3 text-center">
                     <div class="date">
                         <div class="month">
                             {{ date('F', strtotime($due)) }}
@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-9 bill-content">
+                <div class="col-sm-9 bill-content">
                     <p class="company">
                         {{ $company }}
                     </p>
@@ -25,8 +25,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <a href="#{{ $id }}" class="btn btn-fresh text-uppercase btn-block">
+                <div class="col-sm-3">
+                    <a href="{{ URL::route('bill.edit', $id) }}" class="btn btn-sunny text-uppercase btn-block">
+                        <span class="fa fa-check"></span> Edit this bill
+                    </a>
+                </div>
+                <div class="col-sm-9">
+                    <a href="{{ URL::route('bill.pay', $id) }}" class="btn btn-fresh text-uppercase btn-block">
                         <span class="fa fa-check"></span> Mark this bill as paid
                     </a>
                 </div>

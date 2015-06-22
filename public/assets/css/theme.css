@@ -322,3 +322,15 @@
 #line-chart-widget .chart-block .change i {
     font-size: .6em;
 }
+
+
+/*
+*/
+.btn-inline{
+    margin: 0px 0px 0px 1px;
+    border: none;
+}
+.btn-inline:active,.btn-inline:hover{
+    margin: 0px 0px 0px 1px;
+    border-bottom: 0px;
+}
