@@ -17,6 +17,7 @@
         <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
         <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
         <link href="{{ asset('assets/css/theme.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -38,6 +39,7 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="//www.chartjs.org/assets/Chart.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
         <script src="{{ asset('assets/js/ajax.js') }}"></script>
 
         <script>
@@ -47,6 +49,8 @@
                         $(this).delay(5000).slideUp('slow');
                     }
                 });
+
+                $(".select").select2();
             })
         </script>
 

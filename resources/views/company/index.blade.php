@@ -53,14 +53,14 @@
                                     {{ $company['name'] }}
                                 </td>
                                 <td class="text-right">
-                                    {{ number_format($company->bills()->count(), 0) }}
+                                    {{ number_format($company->bills()->where('active', true)->count(), 0) }}
                                 </td>
                                 <td class="text-right">
-                                    ${{ number_format($company->bills()->sum('amount'), 2) }}
+                                    ${{ number_format($company->bills()->where('active', true)->sum('amount'), 2) }}
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm btn-group-justified">
-                                        <a href="{{ URL::route('company.delete', $company['id']) }}" class="btn btn-sunny"><i class="fa fa-plus"></i> Add Bill</a>
+                                        <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-sunny"><i class="fa fa-plus"></i> Add Bill</a>
                                         <a href="{{ URL::route('company.delete', $company['id']) }}" class="btn btn-hot"><i class="fa fa-trash-o"></i> Delete</a>
                                         <a href="{{ URL::route('company.edit', $company['id']) }}" class="btn btn-fresh"><i class="fa fa-edit"></i> Edit</a>
                                     </div>

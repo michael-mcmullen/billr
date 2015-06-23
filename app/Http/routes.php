@@ -40,7 +40,7 @@ Route::group(['prefix' => 'bill'], function(){
         'as'   => 'bill',
         'uses' => 'BillController@index')
     );
-    Route::get('/add', array(
+    Route::get('/add/{company_id?}', array(
         'as'   => 'bill.add',
         'uses' => 'BillController@add')
     );

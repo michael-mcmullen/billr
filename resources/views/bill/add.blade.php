@@ -44,7 +44,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label for="company_id">Company</label>
-                        {!! Form::select('company_id', Auth::user()->companies()->where('active', true)->get()->lists('name', 'id'), old('company_id'), ['class' => 'form-control', 'id' => 'company_id']) !!}
+                        {!! Form::select('company_id', Auth::user()->companies()->where('active', true)->get()->lists('name', 'id'), old('company_id', $company_id), ['class' => 'form-control select', 'id' => 'company_id']) !!}
                     </div>
                     {{-- /end COMPANY --}}
                     <div class="form-group">
