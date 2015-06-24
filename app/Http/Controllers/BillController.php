@@ -44,6 +44,10 @@ class BillController extends Controller {
             ->with('futureBills', $futureBills);
     }
 
+    /**
+     * show the add view
+     * @param integer $company_id optional, company id
+     */
     public function add($company_id = null)
     {
         return view('bill.add')->with('company_id', $company_id);

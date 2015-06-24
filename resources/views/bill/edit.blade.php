@@ -19,6 +19,27 @@
                 autoclose: true
             });
         });
+
+        function deleteBill(id) {
+            swal({
+                    title: "Are you sure?",
+                    text: "Are your sure you want to delete this bill?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it",
+                    cancelButtonText: "No, cancel",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        swal("Deleting", "Please wait while your bill is deleted", "success");
+                        window.location.href = $("#bill-delete-" + id).val();
+                    }
+                }
+            );
+        }
     </script>
 @stop
 
@@ -104,7 +125,8 @@
                     <a href="{{ URL::route('bill') }}" class="btn btn-hot" onclick="switchElement(this, 'ajax-loading');">Cancel</a>
 
                     <div class="pull-right">
-                        <a href="{{ URL::route('bill.delete', $bill['id']) }}" class="btn btn-sky"><i class="fa fa-trash-o"></i> Delete Bill</a>
+                        <a href="{{ URL::route('bill.delete', $bill['id']) }}" class="btn btn-sky" onclick="deleteBill('{{ $bill['id'] }}'); return false;"><i class="fa fa-trash-o"></i> Delete Bill</a>
+                        <input type="hidden" id="bill-delete-{{ $bill['id']}}" value="{{ URL::route('bill.delete', $bill['id']) }}">
                     </div>
 
                     <div id="ajax-loading" class="ajax-wait">

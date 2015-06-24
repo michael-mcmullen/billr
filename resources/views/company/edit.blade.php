@@ -5,6 +5,27 @@
         $(function(){
             $("#company_name").focus();
         });
+
+        function deleteCompany(id) {
+            swal({
+                    title: "Are you sure?",
+                    text: "Are your sure you want to delete this company?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it",
+                    cancelButtonText: "No, cancel",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        swal("Deleting", "Please wait while your company is deleted", "success");
+                        window.location.href = $("#company-delete-" + id).val();
+                    }
+                }
+            );
+        }
     </script>
 @stop
 
@@ -40,6 +61,11 @@
                     <div class="panel-footer">
                         <input type="submit" class="btn btn-fresh text-uppercase" value="Save Company" onclick="switchElement(this, 'ajax-loading');">
                         <a href="{{ URL::route('company') }}" class="btn btn-hot" onclick="switchElement(this, 'ajax-loading');">Cancel</a>
+
+                        <div class="pull-right">
+                        <a href="{{ URL::route('company.delete', $company['id']) }}" class="btn btn-sky" onclick="deleteCompany('{{ $company['id'] }}'); return false;"><i class="fa fa-trash-o"></i> Delete Company</a>
+                        <input type="hidden" id="company-delete-{{ $company['id']}}" value="{{ URL::route('company.delete', $company['id']) }}">
+                    </div>
                         <div id="ajax-loading" class="ajax-wait">
                             <img src="{{ asset('assets/images/spinner.gif') }}"> Please Wait ...
                         </div>

@@ -12,13 +12,14 @@
             <div class="col-md-6">
 
                 <h1 class="page-header">
-                    Login to Billr
+                    Reset your Password
                 </h1>
 
                 @include('layouts.partials.messages')
 
-                <form method="POST" action="{{ URL::to('auth/login') }}">
+                <form method="POST" action="{{ URL::to('password/reset') }}">
                     {!! csrf_field() !!}
+                    <input type="hidden" name="token" value="{{ $token }}">
 
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -31,13 +32,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="remember">Remember Me</label>
-                        <input type="checkbox" id="remember" name="remember">
+                        <label for="password_confirmation">Password Confirmation</label>
+                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg">Login to your account</button>
-                        <a href="{{ URL::to('/auth/register') }}" class="btn btn-default">Register New Account</a>
+                        <button type="submit" class="btn btn-success btn-lg">Reset Password</button>
+                        <a href="{{ URL::to('/auth/login') }}" class="btn btn-default">Login</a>
                     </div>
 
                 </form>

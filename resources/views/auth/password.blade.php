@@ -12,12 +12,12 @@
             <div class="col-md-6">
 
                 <h1 class="page-header">
-                    Login to Billr
+                    Forgot Password for Billr
                 </h1>
 
                 @include('layouts.partials.messages')
 
-                <form method="POST" action="{{ URL::to('auth/login') }}">
+                <form method="POST" action="{{ URL::to('password/email') }}">
                     {!! csrf_field() !!}
 
                     <div class="form-group">
@@ -26,18 +26,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="remember">Remember Me</label>
-                        <input type="checkbox" id="remember" name="remember">
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg">Login to your account</button>
-                        <a href="{{ URL::to('/auth/register') }}" class="btn btn-default">Register New Account</a>
+                        <button type="submit" class="btn btn-success btn-lg">Send Password Reset Link</button>
+                        <a href="{{ URL::to('/auth/login') }}" class="btn btn-default">Login</a>
                     </div>
 
                 </form>

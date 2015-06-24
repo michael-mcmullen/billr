@@ -1,9 +1,10 @@
-[ Next Stream ]
-  > forgot password
+[ Now ]
+ > forgot password
 
- BUG
-  > when a bill's due date is one day before it is considered over due, and it shouldn't be
+[ Next ]
+ > User Settings (notification, sms)
 
+BUG
 
 [ Tests ]
  > edit company
@@ -11,10 +12,4 @@
  > view company list ? (do i really need this)
 
 [ Later ]
- > implement SweetAlert (http://t4t5.github.io/sweetalert/)
  > write part of read me
- > forgot password (email / skin)
- > move "bill" widget into partial
-
-
- brb 5

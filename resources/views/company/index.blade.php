@@ -61,7 +61,6 @@
                                 <td>
                                     <div class="btn-group btn-group-sm btn-group-justified">
                                         <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-sunny"><i class="fa fa-plus"></i> Add Bill</a>
-                                        <a href="{{ URL::route('company.delete', $company['id']) }}" class="btn btn-hot"><i class="fa fa-trash-o"></i> Delete</a>
                                         <a href="{{ URL::route('company.edit', $company['id']) }}" class="btn btn-fresh"><i class="fa fa-edit"></i> Edit</a>
                                     </div>
                                 </td>
