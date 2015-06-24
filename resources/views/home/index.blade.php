@@ -4,13 +4,13 @@
     <script>
         // test data for now
         var line_data = {
-            labels: ["January 2015", "February 2015", "March 2015", "April 2015", "May 2015", "June 2015", "July 2015", "August 2015", "September 2015", "October 2015", "November 2015", "December 2015"],
+            labels: {!! $report !!}.months,
             datasets: [
                 {
                     label: "Spending",
                     fillColor: "#66c796",
                     strokeColor: "#fff",
-                    data: [315.48, 107.13, 245.18, 648.51, 157.59, 159.57, 864.52, 486.54, 198.65, 485.65, 186.54, 868.15]
+                    data: {!! $report !!}.amounts
                 }
             ]
         }
@@ -33,7 +33,6 @@
 @stop
 
 @section('content')
-
 <div class="container">
   <div class="row">
 

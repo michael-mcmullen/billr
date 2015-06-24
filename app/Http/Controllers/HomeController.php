@@ -20,47 +20,26 @@ class HomeController extends Controller {
         $nextPaidBills   = \App\Bill::next(30, true);
         $lastPaidBills   = \App\Bill::before(date('Y-m-d'), true);
 
+        // refactor into REPORTS
+        $report = array();
+        // get months
+        for($month = 1; $month <= 12; $month++)
+        {
+            $startDate = mktime(0, 0, 0, $month, 1, date('Y'));
+            $stopDate  = mktime(0, 0, 0, $month, date('t', $startDate), date('Y'));
+            $bills = \App\Bill::between(date('Y-m-d', $startDate), date('Y-m-d', $stopDate), true);
+
+            $report['months'][]  = date('F Y', $startDate);
+            $report['amounts'][] = $bills->sum('amount');
+        }
+
         return view('home.index')
             ->with('overdueBills', $overdueBills)
             ->with('nextUnpaidBills', $nextUnpaidBills)
             ->with('nextPaidBills', $nextPaidBills)
-            ->with('lastPaidBills', $lastPaidBills);
+            ->with('lastPaidBills', $lastPaidBills)
+            ->with('report', json_encode($report));
 
-        // REFACTOR LATER AFTER ALL WORKING
-        // ***************************************
-        // unpaid bills
-        $companies = Auth::user()->companies;
-        $unpaid    = array('total' => 0.00, 'count' => 0);
-        $thisMonth = array('total' => 0.00, 'count' => 0);
-
-        foreach($companies as $company)
-        {
-            $bills = $company->bills()->where('paid', false)->where('active', true)->get()->lists('amount');
-
-            foreach($bills as $amount)
-            {
-                $unpaid['total'] += $amount;
-                $unpaid['count'] += 1;
-            }
-        }
-
-        // spent this month
-        foreach($companies as $company)
-        {
-
-            $bills = $company->bills()->where("paid_date", 'LIKE', date('Y-m-') ."%")->get()->lists('amount');
-
-            if(count($bills) > 0)
-            {
-                foreach($bills as $amount)
-                {
-                    $thisMonth['total'] += $amount;
-                    $thisMonth['count'] += 1;
-                }
-            }
-        }
-
-        return view('home.index')->with('unpaid', $unpaid)->with('thisMonth', $thisMonth);
     }
 
 }

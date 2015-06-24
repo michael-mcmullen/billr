@@ -1,6 +1,5 @@
 [ Next Stream ]
- > view company (detail)
- > forgot password
+  > forgot password
 
  BUG
   > when a bill's due date is one day before it is considered over due, and it shouldn't be
@@ -16,3 +15,6 @@
  > write part of read me
  > forgot password (email / skin)
  > move "bill" widget into partial
+
+
+ brb 5
