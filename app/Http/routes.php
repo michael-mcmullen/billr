@@ -12,6 +12,10 @@ Route::group(['prefix' => 'company'], function(){
         'as'   => 'company',
         'uses' => 'CompanyController@index')
     );
+    Route::get('/view/{id}', array(
+        'as'   => 'company.view',
+        'uses' => 'CompanyController@view')
+    );
     Route::get('/add', array(
         'as'   => 'company.add',
         'uses' => 'CompanyController@add')

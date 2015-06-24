@@ -50,7 +50,7 @@
                         @foreach(Auth::user()->companies()->where('active', true)->get() as $company)
                             <tr>
                                 <td>
-                                    {{ $company['name'] }}
+                                    <a href="{{ URL::route('company.view', $company['id']) }}">{{ $company['name'] }}</a>
                                 </td>
                                 <td class="text-right">
                                     {{ number_format($company->bills()->where('active', true)->count(), 0) }}

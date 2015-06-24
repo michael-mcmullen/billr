@@ -20,11 +20,34 @@ class CompanyController extends Controller {
         ];
     }
 
+    /**
+     * shows the index view
+     */
     public function index()
     {
         return view('company.index');
     }
 
+    /**
+     * shows the view company
+     * @param  integer $id company id
+     */
+    public function view($id)
+    {
+        $company = \App\Company::loadCompany($id);
+
+        if(! $company)
+        {
+            return Redirect::route('home');
+        }
+
+        return view('company.view')
+            ->with('company', $company);
+    }
+
+    /**
+     * shows the add view
+     */
     public function add()
     {
         return view('company.add');
