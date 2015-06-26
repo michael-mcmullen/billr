@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <div class="page-header">
                 <div class="btn-group pull-right">
-                    <a href="{{ URL::route('bill.add') }}" class="btn btn-fresh"><i class="fa fa-plus"></i> Add New Bill</a>
+                    <a href="{{ URL::route('bill.add') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add New Bill</a>
                 </div>
                 <h1 class="text-danger">
                     <i class="fa fa-exclamation-circle text-danger"></i> Over Due Bills

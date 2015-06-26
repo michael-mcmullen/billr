@@ -47,7 +47,7 @@
           <label class="text-muted">overdue bills (${{ number_format($overdueBills->sum('amount'), 2) }})</label>
         </div>
         <div class="options">
-          <a href="{{ URL::route('bill') }}" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-search"></i> View Bills</a>
+          <a href="{{ URL::route('bill') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-search"></i> View Bills</a>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
           <label class="text-muted">due in 30 days (${{ number_format($nextUnpaidBills->sum('amount'), 2) }})</label>
         </div>
         <div class="options">
-          <a href="{{ URL::route('bill.add') }}" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Bill</a>
+          <a href="{{ URL::route('bill.add') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Bill</a>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
           <label class="text-muted">companies</label>
         </div>
         <div class="options">
-          <a href="{{ URL::route('company.add') }}" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Company</a>
+          <a href="{{ URL::route('company.add') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Company</a>
         </div>
       </div>
     </div>

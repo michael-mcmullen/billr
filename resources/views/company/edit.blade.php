@@ -36,9 +36,9 @@
         <div class="col-md-8">
 
             <div class="page-header">
-                <h1>
+                <h3>
                     Edit Company <small>edit the information about a company</small>
-                </h1>
+                </h3>
             </div>
 
             {!! Form::open(['route' => 'company.update', 'autocomplete' => 'off']) !!}
@@ -59,11 +59,11 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <input type="submit" class="btn btn-fresh text-uppercase" value="Save Company" onclick="switchElement(this, 'ajax-loading');">
-                        <a href="{{ URL::route('company') }}" class="btn btn-hot" onclick="switchElement(this, 'ajax-loading');">Cancel</a>
+                        <input type="submit" class="btn btn-success text-uppercase" value="Save Company" onclick="switchElement(this, 'ajax-loading');">
+                        <a href="{{ URL::route('company') }}" class="btn btn-danger" onclick="switchElement(this, 'ajax-loading');">Cancel</a>
 
                         <div class="pull-right">
-                        <a href="{{ URL::route('company.delete', $company['id']) }}" class="btn btn-sky" onclick="deleteCompany('{{ $company['id'] }}'); return false;"><i class="fa fa-trash-o"></i> Delete Company</a>
+                        <a href="{{ URL::route('company.delete', $company['id']) }}" class="btn btn-warning" onclick="deleteCompany('{{ $company['id'] }}'); return false;"><i class="fa fa-trash-o"></i> Delete Company</a>
                         <input type="hidden" id="company-delete-{{ $company['id']}}" value="{{ URL::route('company.delete', $company['id']) }}">
                     </div>
                         <div id="ajax-loading" class="ajax-wait">

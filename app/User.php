@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'phone_number', 'phone_provider', 'notification_type'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -49,5 +49,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('App\Company');
     }
 
+    public static function canSMS()
+    {
+        $canSendSMS = true;
 
+        if(empty(\Auth::user()->phone_number))
+            $canSendSMS = false;
+        if(empty(\Auth::user()->phone_provider))
+            $canSendSMS = false;
+        if(strtolower(\Auth::user()->notification_type) != 'sms')
+            $canSendSMS = false;
+
+        return $canSendSMS;
+    }
 }

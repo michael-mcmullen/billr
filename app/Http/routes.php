@@ -74,6 +74,22 @@ Route::group(['prefix' => 'bill'], function(){
     );
 });
 
+// SETTINGS
+Route::group(['prefix' => 'settings'], function(){
+    Route::get('/', array(
+        'as'   => 'settings',
+        'uses' => 'SettingsController@index')
+    );
+    Route::post('/update', array(
+        'as'   => 'settings.update',
+        'uses' => 'SettingsController@update')
+    );
+    Route::get('/testSMS', array(
+        'as'   => 'settings.testSMS',
+        'uses' => 'SettingsController@testSMS')
+    );
+});
+
 // AUTHENTICATION
 Route::group(['prefix' => 'auth'], function() {
     // Authentication routes...

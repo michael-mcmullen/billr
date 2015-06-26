@@ -10,12 +10,12 @@
         <div class="col-md-12">
 
             <div class="page-header">
-                <h1>
+                <h3>
                     <div class="pull-right">
-                        <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-success"><i class="fa fa-plus"></i> Add New Bill</a>
+                        <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add New Bill</a>
                     </div>
                     Viewing {{ $company['name'] }} <small>Account: {{ $company['account_number'] }}</small>
-                </h1>
+                </h3>
             </div>
 
             @include('layouts.partials.messages')
@@ -23,9 +23,7 @@
             <!-- Active Bills -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>
                         Unpaid Bills
-                    </h4>
                 </div>
                 <table class="table table-hover table-bordered table-striped">
                     <tbody>
@@ -58,8 +56,8 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm btn-group-justified">
-                                        <a href="{{ URL::route('bill.edit', $bill['id']) }}" class="btn btn-sunny"><i class="fa fa-plus"></i> Edit Bill</a>
-                                        <a href="{{ URL::route('bill.pay', $bill['id']) }}" class="btn btn-fresh"><i class="fa fa-check"></i> Paid Bill</a>
+                                        <a href="{{ URL::route('bill.edit', $bill['id']) }}" class="btn btn-info"><i class="fa fa-edit"></i> Edit Bill</a>
+                                        <a href="{{ URL::route('bill.pay', $bill['id']) }}" class="btn btn-success"><i class="fa fa-check"></i> Paid Bill</a>
                                     </div>
                                 </td>
                             </tr>
@@ -71,9 +69,7 @@
             <!-- Inactive Bills -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>
                         Paid Bills
-                    </h4>
                 </div>
                 <table class="table table-hover table-bordered table-striped">
                     <tbody>

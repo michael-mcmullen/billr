@@ -26,12 +26,12 @@
             </div>
             <div class="row">
                 <div class="col-sm-3">
-                    <a href="{{ URL::route('bill.edit', $id) }}" class="btn btn-sunny text-uppercase btn-block">
+                    <a href="{{ URL::route('bill.edit', $id) }}" class="btn btn-primary text-uppercase btn-block">
                         <span class="fa fa-check"></span> Edit this bill
                     </a>
                 </div>
                 <div class="col-sm-9">
-                    <a href="{{ URL::route('bill.pay', $id) }}" class="btn btn-fresh text-uppercase btn-block">
+                    <a href="{{ URL::route('bill.pay', $id) }}" class="btn btn-success text-uppercase btn-block">
                         <span class="fa fa-check"></span> Mark this bill as paid
                     </a>
                 </div>

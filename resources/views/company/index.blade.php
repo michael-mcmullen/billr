@@ -10,9 +10,9 @@
         <div class="col-md-12">
 
             <div class="page-header">
-                <h1>
+                <h3>
                     Companies <small>a listing of all the companies that you have added</small>
-                </h1>
+                </h3>
             </div>
 
             @include('layouts.partials.messages')
@@ -20,7 +20,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="btn-group pull-right">
-                        <a href="{{ URL::route('company.add') }}" class="btn btn-success" onclick="switchElement(this, 'ajax-loading');"><i class="fa fa-plus"></i> Add New Company</a>
+                        <a href="{{ URL::route('company.add') }}" class="btn btn-primary" onclick="switchElement(this, 'ajax-loading');"><i class="fa fa-plus"></i> Add New Company</a>
                         <div id="ajax-loading" class="ajax-wait">
                             <img src="{{ asset('assets/images/spinner.gif') }}"> Please Wait ...
                         </div>
@@ -60,8 +60,8 @@
                                 </td>
                                 <td>
                                     <div class="btn-group btn-group-sm btn-group-justified">
-                                        <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-sunny"><i class="fa fa-plus"></i> Add Bill</a>
-                                        <a href="{{ URL::route('company.edit', $company['id']) }}" class="btn btn-fresh"><i class="fa fa-edit"></i> Edit</a>
+                                        <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add Bill</a>
+                                        <a href="{{ URL::route('company.edit', $company['id']) }}" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
                                     </div>
                                 </td>
                             </tr>

@@ -15,9 +15,9 @@
         <div class="col-md-8">
 
             <div class="page-header">
-                <h1>
+                <h3>
                     Add Company <small>add a company to manage</small>
-                </h1>
+                </h3>
             </div>
 
             {!! Form::open(['route' => 'company.insert', 'autocomplete' => 'off']) !!}
@@ -37,8 +37,8 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <input type="submit" class="btn btn-fresh text-uppercase" value="Save Company" onclick="switchElement(this, 'ajax-loading');">
-                        <a href="{{ URL::route('company') }}" class="btn btn-hot" onclick="switchElement(this, 'ajax-loading');">Cancel</a>
+                        <input type="submit" class="btn btn-success text-uppercase btn-lg" value="Save Company" onclick="switchElement(this, 'ajax-loading');">
+                        <a href="{{ URL::route('company') }}" class="btn btn-danger" onclick="switchElement(this, 'ajax-loading');">Cancel</a>
                         <div id="ajax-loading" class="ajax-wait">
                             <img src="{{ asset('assets/images/spinner.gif') }}"> Please Wait ...
                         </div>

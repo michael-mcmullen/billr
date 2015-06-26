@@ -49,9 +49,12 @@ class Company extends Model
     {
         $company = Company::find($id);
 
-        if(intval(Auth::id()) !== intval($company->user_id))
+        if(! empty($company))
         {
-            $company = null;
+            if(intval(Auth::id()) !== intval($company->user_id))
+            {
+                $company = null;
+            }
         }
 
         return $company;

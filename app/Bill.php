@@ -58,9 +58,12 @@ class Bill extends Model
 
         $bill = Bill::find($id);
 
-        if(Auth::id() != $bill['user_id'])
+        if(! empty($bill))
         {
-            return array();
+            if(Auth::id() != $bill['user_id'])
+            {
+                return array();
+            }
         }
 
         return $bill;
