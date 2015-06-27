@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'support@mybillr.ca', 'name' => 'My Billr Support'],
+    'from' => ['address' => 'support@mybillr.com', 'name' => 'My Billr Support'],
 
     /*
     |--------------------------------------------------------------------------

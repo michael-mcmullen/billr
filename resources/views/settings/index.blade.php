@@ -38,13 +38,22 @@
             </div>
 
             <div class="form-group">
+                <label for="notification_days">Days before receiving a Notification</label>
+                <input type="text" class="form-control" id="notification_days" name="notification_days" placeholder="123-456-7890" value="{{ old('notification_days', Auth::user()->notification_days) }}">
+            </div>
+
+            <div class="form-group">
                 @if(Auth::user()->canSMS())
                     <div class="pull-right">
-                        <a href="{{ URL::route('settings.testSMS') }}" class="btn btn-primary">Send SMS Text</a>
+                        <a href="{{ URL::route('settings.testSMS') }}" class="btn btn-primary"><i class="fa fa-mobile"></i> Send SMS Test</a>
+                    </div>
+                @else
+                    <div class="pull-right">
+                        <a href="{{ URL::route('settings.testEmail') }}" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send Email Test</a>
                     </div>
                 @endif
 
-                <input type="submit" class="btn btn-fresh" value="Save Settings">
+                <input type="submit" class="btn btn-success" value="Save Settings">
                 <a href="{{ URL::route('home') }}" class="btn btn-danger">Cancel</a>
             </div>
 

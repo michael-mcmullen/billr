@@ -35,7 +35,8 @@ class SettingsController extends Controller {
     {
         $rules = [
             'phone_number'   => 'required_if:notification_type,SMS',
-            'phone_provider' => 'required_if:notification_type,SMS'
+            'phone_provider' => 'required_if:notification_type,SMS',
+            'notification_days' => 'required|integer|min:0|max:30'
         ];
 
 
@@ -45,6 +46,7 @@ class SettingsController extends Controller {
         Auth::user()->phone_number      = $request->input('phone_number');
         Auth::user()->phone_provider    = $request->input('phone_provider');
         Auth::user()->notification_type = $request->input('notification_type');
+        Auth::user()->notification_days = $request->input('notification_days');
         Auth::user()->save();
 
         Session::flash('success', ['Your settings have been saved']);
@@ -57,6 +59,15 @@ class SettingsController extends Controller {
         $this->dispatch(new \App\Jobs\TestSMS(Auth::id()));
 
         Session::flash('success', ['A test SMS Notification has been sent to your phone.']);
+
+        return Redirect::route('settings');
+    }
+
+    public function testEmail()
+    {
+        $this->dispatch(new \App\Jobs\TestEmail(Auth::id()));
+
+        Session::flash('success', ['A test Email Notification has been sent to your inbox.']);
 
         return Redirect::route('settings');
     }

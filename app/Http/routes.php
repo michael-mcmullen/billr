@@ -88,6 +88,10 @@ Route::group(['prefix' => 'settings'], function(){
         'as'   => 'settings.testSMS',
         'uses' => 'SettingsController@testSMS')
     );
+    Route::get('/testSMS', array(
+        'as'   => 'settings.testEmail',
+        'uses' => 'SettingsController@testEmail')
+    );
 });
 
 // AUTHENTICATION
