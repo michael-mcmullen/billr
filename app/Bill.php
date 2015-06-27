@@ -90,12 +90,19 @@ class Bill extends Model
      * @param  boolean      $paid   if you want paid or unpaid bills
      * @return collection           collection of bills
      */
-    public static function next($days, $paid)
+    public static function next($days, $paid, $user_id = null)
     {
         $dateStart = date('Y-m-d');
         $dateStop  = date('Y-m-d', strtotime("+$days days"));
 
-        $bills = Auth::user()->bills()->where('active', true)->where('paid', $paid)->whereBetween('due', [$dateStart, $dateStop])->orderBy('due')->get();
+        if(! $user_id)
+        {
+            $user_id = Auth::id();
+        }
+
+        $user = \App\User::find($user_id);
+
+        $bills = $user->bills()->where('active', true)->where('paid', $paid)->whereBetween('due', [$dateStart, $dateStop])->orderBy('due')->get();
 
         return $bills;
     }
