@@ -26,25 +26,36 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg">Send Password Reset Link</button>
-                        <a href="{{ URL::to('/auth/login') }}" class="btn btn-default">Login</a>
+                        <input type="submit" class="btn btn-success btn-lg btn-block" value="Send Password Reset Link">
                     </div>
 
                 </form>
 
             </div>
+            
             <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Forgot Password?
-                    </div>
-                    <div class="panel-body">
+
+                <h1 class="page-header">
+                    Remember your password?
+                </h1>
+
+                <div class="row">
+                    <div class="col-md-12">
                         <p>
-                            No worries, you can get a new password by clicking the button below.
+                            Passwords can be tough. Once in awhile we remember them at the strangest time.
                         </p>
-                        <a href="{{ URL::to('password/email') }}" class="btn btn-primary">Forgot Password</a>
+                        <p>
+                            If you have remembered your password, you can log in by using the button below.
+                        </p>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{ URL::to('auth/login') }}" class="btn btn-primary btn-block">Login</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

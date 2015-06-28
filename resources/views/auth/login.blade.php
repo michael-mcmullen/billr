@@ -43,14 +43,20 @@
                 </form>
 
             </div>
+
             <div class="col-md-6">
+
+                <h1 class="page-header">
+                    Forgot your Password?
+                </h1>
+
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Forgot Password?
-                    </div>
                     <div class="panel-body">
                         <p>
-                            No worries, you can get a new password by clicking the button below.
+                            If you forgot your password, no problem.
+                        </p>
+                        <p>
+                            Getting a password is very easy. Click the button below and all you need is your email address.
                         </p>
                         <a href="{{ URL::to('password/email') }}" class="btn btn-primary">Forgot Password</a>
                     </div>
