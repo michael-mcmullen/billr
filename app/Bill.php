@@ -52,6 +52,11 @@ class Bill extends Model
         return $this->belongsTo('App\Company');
     }
 
+    /**
+     * loads the bill handling the authentication
+     * @param  integer $id bill id
+     * @return bill    bill array
+     */
     public static function loadBill($id)
     {
         $bill = array();
@@ -88,6 +93,7 @@ class Bill extends Model
      * returns the bills for the next $DAYS for the logged in user
      * @param  integer      $days   number of days to go ahead
      * @param  boolean      $paid   if you want paid or unpaid bills
+     * @param  integer $user_id null will use the authenticated user
      * @return collection           collection of bills
      */
     public static function next($days, $paid, $user_id = null)
@@ -126,13 +132,21 @@ class Bill extends Model
      * returns the bills after the $DAYS for the logged in user
      * @param  integer      $days   number of days to go ahead
      * @param  boolean      $paid   if you want paid or unpaid bills
+     * @param  integer $user_id null will use the authenticated user
      * @return collection           collection of bills
      */
-    public static function after($days, $paid)
+    public static function after($days, $paid, $user_id = null)
     {
         $dateStart = date('Y-m-d', strtotime("+$days days"));
 
-        $bills = Auth::user()->bills()->where('active', true)->where('paid', $paid)->where('due', '>', $dateStart)->orderBy('due')->get();
+        if(! $user_id)
+        {
+            $user_id = Auth::id();
+        }
+
+        $user = \App\User::find($user_id);
+
+        $bills = $user->bills()->where('active', true)->where('paid', $paid)->where('due', '>', $dateStart)->orderBy('due')->get();
 
         return $bills;
     }
@@ -143,8 +157,23 @@ class Bill extends Model
      * @param  boolean      $paid       if you want paid or unpaid bills
      * @return collection               collection of bills
      */
-    public static function before($dateStart, $paid)
+    public static function before($dateStart, $paid, $user_id = null)
     {
-        return Auth::user()->bills()->where('active', true)->where('paid', $paid)->where('due', '<=', $dateStart)->orderBy('due')->get();
+        if(! $user_id)
+        {
+            $user_id = Auth::id();
+        }
+
+        $user = \App\User::find($user_id);
+
+        return $user->bills()->where('active', true)->where('paid', $paid)->where('due', '<', $dateStart)->orderBy('due')->get();
+    }
+
+    public function isOverdue()
+    {
+        $due   = strtotime(date('Y-m-d', strtotime($this->due)));
+        $today = strtotime(date('Y-m-d'));
+
+        return ($due - $today < 0) ? true : false;
     }
 }

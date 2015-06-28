@@ -32,25 +32,54 @@ class SendNotifications extends Command
     {
         $users = \App\User::all();
 
+        // for each of our users
         foreach($users as $user)
         {
-            $this->comment($user['email']);
-
+            // ensure they have a notification type selected
             if(! empty($user['notification_type']))
             {
+                // grab all the bills for that user within the notification days
                 $bills = \App\Bill::next($user['notification_days'], false, $user['id']);
 
+                // go through each of the bills and send the appropriate notification
                 foreach($bills as $bill)
                 {
-                    $this->comment($bill['amount']);
+                    $this->comment('Sending bill reminder ['. $bill['id'] .'] for user ['. $user['id'] .']');
 
                     switch(strtolower($user['notification_type']))
                     {
                         case 'email':
-                            $this->dispatch(new \App\Jobs\SendEmail($user['id'], $bill['id']));
+                            $this->comment('Dispatching Email ...');
+                            $this->dispatch(new \App\Jobs\SendEmail($user['id'], $bill['id'], false));
+                            $this->comment('Email Dispatched');
                             break;
                         case 'sms':
-                            $this->dispatch(new \App\Jobs\SendSMS($user['id'], $bill['id']));
+                            $this->comment('Dispatching SMS ...');
+                            $this->dispatch(new \App\Jobs\SendSMS($user['id'], $bill['id']), false);
+                            $this->comment('SMS Dispatched');
+                            break;
+                    }
+                }
+
+                // while we are here, grab any overdue bills
+                $bills = \App\Bill::before(date('Y-m-d'), false, $user['id']);
+
+                // go through each of the bills and send the appropriate notification
+                foreach($bills as $bill)
+                {
+                    $this->comment('Sending overdue bill ['. $bill['id'] .'] for user ['. $user['id'] .']');
+
+                    switch(strtolower($user['notification_type']))
+                    {
+                        case 'email':
+                            $this->comment('Dispatching Email ...');
+                            $this->dispatch(new \App\Jobs\SendEmail($user['id'], $bill['id'], true));
+                            $this->comment('Email Dispatched');
+                            break;
+                        case 'sms':
+                            $this->comment('Dispatching SMS ...');
+                            $this->dispatch(new \App\Jobs\SendSMS($user['id'], $bill['id'], true));
+                            $this->comment('SMS Dispatched');
                             break;
                     }
                 }
