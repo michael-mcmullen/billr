@@ -88,7 +88,7 @@ Route::group(['prefix' => 'settings'], function(){
         'as'   => 'settings.testSMS',
         'uses' => 'SettingsController@testSMS')
     );
-    Route::get('/testSMS', array(
+    Route::get('/testEmail', array(
         'as'   => 'settings.testEmail',
         'uses' => 'SettingsController@testEmail')
     );
