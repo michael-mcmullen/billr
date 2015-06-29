@@ -20,7 +20,7 @@
                         Transaction: $<span class="dollar">{{ number_format($amount, 2) }}</span>
                     </p>
                     <p class="account">
-                        Account: {{ ($account_number) ?: 'N/A'  }}
+                        Nickname: {{ ($nickname) ?: 'N/A'  }}
                     </p>
                 </div>
             </div>

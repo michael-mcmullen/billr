@@ -40,7 +40,7 @@ class TestEmail extends Job implements SelfHandling
 
         // Try to send an Email
         Mail::send('emails.email.test', [], function ($message) use ($user) {
-            $message->from('sms@mybillr.com');
+            $message->from('notifications@mybillr.com');
             $message->subject('Upcoming Bill Notification [test]');
 
             $message->to($user['email']);

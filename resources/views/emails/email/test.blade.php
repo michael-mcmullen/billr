@@ -924,7 +924,7 @@ a:hover{color:#30495c !important}.wrapper .logo div{color:#41637e}.wrapper .logo
                           <tbody><tr>
                             <td class="padded" style="padding: 0;vertical-align: top;padding-left: 32px;padding-right: 32px;word-break: break-word;word-wrap: break-word">
 
-            <h1 style="Margin-top: 0;color: #565656;font-weight: normal;font-size: 52px;Margin-bottom: 22px;font-family: sans-serif;text-align: center;line-height: 58px">Upcoming Bill $36.54</h1><p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 21px;line-height: 32px;Margin-bottom: 32px;text-align: center">MyBillr (Account: 1234) is Due on June 2, 2015</p>
+            <h1 style="Margin-top: 0;color: #565656;font-weight: normal;font-size: 52px;Margin-bottom: 22px;font-family: sans-serif;text-align: center;line-height: 58px">Upcoming Bill $36.54</h1><p style="Margin-top: 0;color: #565656;font-family: Georgia,serif;font-size: 21px;line-height: 32px;Margin-bottom: 32px;text-align: center">MyBillr (Nickname: 1234) is Due on June 2, 2015</p>
 
                             </td>
                           </tr>

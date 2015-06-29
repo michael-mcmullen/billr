@@ -65,7 +65,7 @@ class CompanyController extends Controller {
         // validation passed, insert company
         $company = new \App\Company([
             'name'           => $request->input('company_name'),
-            'account_number' => $request->input('account_number')
+            'nickname' => $request->input('nickname')
         ]);
 
 
@@ -112,7 +112,7 @@ class CompanyController extends Controller {
         }
 
         $company['name']           = $request->input('company_name');
-        $company['account_number'] = $request->input('account_number');
+        $company['nickname'] = $request->input('nickname');
         $company->save();
 
         Session::flash('success', ['The company has been updated successfully']);

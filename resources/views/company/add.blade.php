@@ -32,8 +32,8 @@
                             <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Example Co" value="{{ old('company_name') }}">
                         </div>
                         <div class="form-group">
-                            <label for="account_number">Account Number</label>
-                            <input type="text" class="form-control" id="account_number" name="account_number" placeholder="1234-56748-94241" value="{{ old('account_number') }}">
+                            <label for="nickname">Nickname</label>
+                            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Electricity" value="{{ old('nickname') }}">
                         </div>
                     </div>
                     <div class="panel-footer">

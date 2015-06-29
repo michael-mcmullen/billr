@@ -14,7 +14,7 @@
                     <div class="pull-right">
                         <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add New Bill</a>
                     </div>
-                    Viewing {{ $company['name'] }} <small>Account: {{ $company['account_number'] }}</small>
+                    Viewing {{ $company['name'] }} <small>Nickname: {{ $company['nickname'] }}</small>
                 </h3>
             </div>
 

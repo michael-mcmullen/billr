@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         @foreach($overdueBills as $bill)
-            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'account_number' => $bill->company->account_number])
+            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
         @endforeach
     </div>
 </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="row">
         @foreach($nextBills as $bill)
-            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'account_number' => $bill->company->account_number])
+            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
         @endforeach
     </div>
 </div>
@@ -59,7 +59,7 @@
     </div>
     <div class="row">
         @foreach($futureBills as $bill)
-            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'account_number' => $bill->company->account_number])
+            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
         @endforeach
     </div>
 </div>

@@ -53,7 +53,7 @@
                         </dl>
                     </div>
 
-                    <div class="footer-copyright text-center">Copyright &copy; 2014 Flathemes.All rights reserved.</div>
+                    <div class="footer-copyright text-center">Copyright &copy; 2015 <a href="http://www.tutelagesystems.com">Tutelage Systems</a></div>
                 </div>
             </div>
         </div>

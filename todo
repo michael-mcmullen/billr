@@ -1,11 +1,11 @@
-[ Now ]
+[ NOW ]
 
+[ TONIGHT ]
+ > Change Account Number to Nickname (database -> model -> views)
 
-[ Tests ]
- > edit company
- > delete company
- > view company list ? (do i really need this)
 
 [ Later ]
  > write part of read me
  > finish logo
+
+[ Tests ]
