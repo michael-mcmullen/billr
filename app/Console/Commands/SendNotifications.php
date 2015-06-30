@@ -55,7 +55,7 @@ class SendNotifications extends Command
                             break;
                         case 'sms':
                             $this->comment('Dispatching SMS ...');
-                            $this->dispatch(new \App\Jobs\SendSMS($user['id'], $bill['id']), false);
+                            $this->dispatch(new \App\Jobs\SendSMS($user['id'], $bill['id'], false));
                             $this->comment('SMS Dispatched');
                             break;
                     }
