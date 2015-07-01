@@ -8,7 +8,7 @@
         <meta name="author" content="">
 
         <title>
-            Billr
+            MyBillr
         </title>
 
 
