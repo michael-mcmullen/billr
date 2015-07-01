@@ -7,7 +7,7 @@
             <tbody>
                 <tr>
                     <th width="30%" style="vertical-align: middle;">
-                        {{ $company }} {{ ($nickname) ? '('. $nickname .')' : 'N/A'  }}
+                        {{ $company }} {{ ($nickname) ? '('. $nickname .')' : ''  }}
                     </th>
                     <td width="20%" style="font-size: 20px; vertical-align: middle;">
                         ${{ number_format($amount, 2) }}
