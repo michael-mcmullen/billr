@@ -8,7 +8,7 @@
         <meta name="author" content="">
 
         <title>
-            Billr - @yield('page-title')
+            MyBillr - @yield('page-title')
         </title>
 
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
