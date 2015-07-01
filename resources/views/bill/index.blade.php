@@ -22,11 +22,10 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        @foreach($overdueBills as $bill)
-            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
-        @endforeach
-    </div>
+
+    @foreach($overdueBills as $bill)
+        @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
+    @endforeach
 </div>
 
 
@@ -40,11 +39,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        @foreach($nextBills as $bill)
-            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
-        @endforeach
-    </div>
+
+    @foreach($nextBills as $bill)
+        @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
+    @endforeach
+
 </div>
 
 <div class="container">
@@ -57,11 +56,11 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        @foreach($futureBills as $bill)
-            @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
-        @endforeach
-    </div>
+
+    @foreach($futureBills as $bill)
+        @include('bill.partials.widget-bill', ['id' => $bill['id'], 'due' => $bill->due, 'company' => $bill->company['name'], 'amount' => $bill->amount, 'nickname' => $bill->company->nickname])
+    @endforeach
+
 </div>
 
 @stop
