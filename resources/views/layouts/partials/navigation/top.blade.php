@@ -23,11 +23,16 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><i class="fa fa-warning"></i> 0 Notifications</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account ({{ Auth::user()->email }})<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<span class="caret"></span></a>
 
           <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">
+                Logged in as
+                <br />
+                {{ Auth::user()->email }}
+            </li>
+            <li class="divider"></li>
             <li><a href="{{ URL::route('settings') }}"><i class="fa fa-gear"></i> Settings</a></li>
             <li class="divider"></li>
             <li><a href="{{ URL::to('auth/logout') }}"><i class="fa fa-unlock"></i> Logout</a></li>
