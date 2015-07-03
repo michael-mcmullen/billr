@@ -62,17 +62,34 @@ class CompanyController extends Controller {
         // validate user input
         $this->validate($request, $this->validationRules);
 
-        // validation passed, insert company
-        $company = new \App\Company([
-            'name'           => $request->input('company_name'),
-            'nickname' => $request->input('nickname')
-        ]);
+        $this->dispatch(new \App\Jobs\CreateCompany(Auth::id(), $request->input('company_name'), $request->input('nickname')));
 
-
-        Auth::user()->companies()->save($company);
         Session::flash('success', ['The company has been added successfully']);
 
         return Redirect::route('company');
+    }
+
+    /**
+     * try to insert the company using AJAX
+     */
+    public function insertAjax(Request $request)
+    {
+        $validator = \Validator::make($request->all(), $this->validationRules);
+
+        if ($validator->fails()) {
+            return '0';
+        }
+
+        $this->dispatch(new \App\Jobs\CreateCompany(Auth::id(), $request->input('company_name'), ''));
+
+        return '1';
+    }
+
+    public function listing()
+    {
+        $companies = Auth::user()->companies()->where('active', true)->orderBy('name')->get();
+
+        return $companies;
     }
 
     /**

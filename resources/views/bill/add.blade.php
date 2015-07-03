@@ -23,6 +23,72 @@
         function copyAmount() {
             $("#paid_amount").val($("#amount").val());
         }
+
+        function addCompany() {
+            swal(
+                {
+                    title: "New Company",
+                    text: "Enter the name of the new company (minimum 2 characters):",
+                    type: "input",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    animation: "slide-from-top",
+                    inputPlaceholder: "Company Name"
+                },
+                function(inputValue) {
+                    if (inputValue === false)
+                        return false;
+                    if (inputValue === "") {
+                        swal.showInputError("You need to write something!");
+                        return false;
+                    }
+
+                    var token = $("input[name='_token']").val();
+
+                    $.ajax({
+                        url: '{{ URL::route('company.insert.ajax') }}',
+                        type: 'POST',
+                        dataType: 'text',
+                        data: {company_name: inputValue, _token: token},
+                        success: function(responseText)
+                        {
+                            responseText = parseInt(responseText);
+
+                            if(responseText === 1)
+                            {
+                                // load the company listing for the user
+                                $.getJSON('{{ URL::route('company.listing') }}', function(jsonListing){
+                                    var newSelect = new Array();
+
+                                    // for each of the json objects we got, loop through them and make an array that select2 understands
+                                    $.each(jsonListing,function(idx, ele) {
+                                        // out temporary variable
+                                        var data = { };
+                                        data.id = ele.id;
+                                        data.text = ele.name;
+
+                                        // push the temporary variable into the new selet listing
+                                        newSelect.push(data);
+                                    });
+
+                                    // assign the new list to the select box
+                                    $(".select").select2({
+                                        data: newSelect
+                                    });
+
+                                    // close the sweet alert
+                                    swal.close();
+                                });
+                            }
+                            else
+                            {
+                                swal("Warning", "you need to provide a company name");
+                            }
+                        }
+                    });
+                }
+            );
+        }
     </script>
 @stop
 
@@ -52,7 +118,10 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="company_id">Company</label>
-                                {!! Form::select('company_id', Auth::user()->companies()->where('active', true)->get()->lists('name', 'id'), old('company_id', $company_id), ['class' => 'form-control select', 'id' => 'company_id']) !!}
+                                <span class="pull-right">
+                                    <a href="#" class="btn btn-xs btn-primary" onclick="addCompany(); return false;">New Company</a>
+                                </span>
+                                {!! Form::select('company_id', Auth::user()->companies()->where('active', true)->orderBy('name')->get()->lists('name', 'id'), old('company_id', $company_id), ['class' => 'form-control select', 'id' => 'company_id']) !!}
                             </div>
                         </div>
                     </div>

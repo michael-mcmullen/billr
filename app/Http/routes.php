@@ -36,6 +36,15 @@ Route::group(['prefix' => 'company'], function(){
         'as'   => 'company.delete',
         'uses' => 'CompanyController@delete')
     );
+
+    Route::post('/ajax/insert', array(
+        'as'   => 'company.insert.ajax',
+        'uses' => 'CompanyController@insertAjax')
+    );
+    Route::get('/ajax/listing', array(
+        'as'   => 'company.listing',
+        'uses' => 'CompanyController@listing')
+    );
 });
 
 // BILL
