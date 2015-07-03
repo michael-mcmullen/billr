@@ -1,4 +1,18 @@
+/**
+ * navbar override
+ */
 .navbar{ border-radius: 0px; }
+.navbar-default{ background-color: #37bc9b; }
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover {
+  color: #237F69;
+}
+
+/**
+ * date picker override
+ */
 .datepicker-dropdown{ background-color: #fff; }
 
 html {
@@ -48,6 +62,13 @@ body {
   line-height: 96px;
   margin-bottom: 10px;
   text-align: center;
+}
+
+.hero-widget .icon-sm {
+    font-size: 24px;
+    line-height: 48px;
+    margin-bottom: 10px;
+
 }
 
 .hero-widget var {

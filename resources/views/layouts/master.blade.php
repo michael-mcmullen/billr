@@ -41,7 +41,7 @@
             <div class="container">
                 <div class="clearfix">
                     <div class="footer-logo"><a href="{{ URL::route('home') }}">MyBillr</a></div>
-                        <dl class="footer-nav visible-sm visible-md visible-lg">
+                        <dl class="footer-nav visible-md visible-lg">
                             <dt class="nav-title">Links</dt>
                             <dd class="nav-item"><a href="{{ URL::route('home') }}">Home</a></dd>
                             <dd class="nav-item"><a href="{{ URL::route('bill') }}">Bills</a></dd>
