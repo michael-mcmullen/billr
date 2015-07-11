@@ -39,7 +39,7 @@
                 function(isConfirm){
                     if (isConfirm) {
                         swal("Deleting", "Please wait while your bill is deleted", "success");
-                        window.location.href = $("#bill-delete-" + id).val();
+                        window.location.href = '{{ URL::route('bill.delete', $bill['id']) }}'
                     }
                 }
             );
@@ -161,11 +161,22 @@
                     </div>
 
                     <div class="panel-footer">
-                        <input type="submit" class="btn btn-success text-uppercase btn-lg" value="Save Bill" onclick="switchElement(this, 'ajax-loading');">
-                    <a href="{{ URL::route('bill') }}" class="btn btn-danger" onclick="switchElement(this, 'ajax-loading');">Cancel</a>
-                        <div id="ajax-loading" class="ajax-wait">
+                        <div class="pull-left" id="actions">
+                            <input type="submit" class="btn btn-success text-uppercase btn-lg" value="Save Bill" onclick="switchElementById('actions', 'ajax-loading');">
+                            <a href="{{ URL::route('bill') }}" class="btn btn-danger" onclick="switchElementById('actions', 'ajax-loading');">Cancel</a>
+                        </div>
+                        <div id="ajax-loading" class="ajax-wait pull-left">
                             <img src="{{ asset('assets/images/spinner.gif') }}"> Please Wait ...
                         </div>
+
+                        <div class="pull-right" id="delete">
+                            <a href="{{ URL::route('bill.delete', $bill['id']) }}" class="btn btn-danger" onclick="deleteBill(); return false;">Delete</a>
+                            <div id="ajax-delete" class="ajax-wait pull-left">
+                                <img src="{{ asset('assets/images/spinner.gif') }}"> Please Wait ...
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
                     </div>
                 </div>
 
