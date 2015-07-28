@@ -32,11 +32,14 @@
                 <table class="table table-hover table-bordered table-striped">
                     <tbody>
                         <tr>
-                            <th width="50%">
+                            <th width="40%">
                                 Name
                             </th>
                             <th width="10%">
                                 Current
+                            </th>
+                            <th width="10%">
+                                Last Paid
                             </th>
                             <th width="10%">
                                 Total Bills
@@ -58,6 +61,11 @@
                                 <td class="text-right">
                                     {{ number_format($company->bills()->where('active', true)->where('paid', false)->count(), 0) }}
                                     (${{ number_format($company->bills()->where('active', true)->where('paid', false)->sum('amount'), 2) }})
+                                </td>
+                                <td class="text-right">
+                                    @if($company->bills()->where('active', true)->where('paid', true)->count() > 0)
+                                        {{ $company->bills()->where('active', true)->where('paid', true)->get()->last()->paid_date->format('F d, Y') }}
+                                    @endif
                                 </td>
                                 <td class="text-right">
                                     {{ number_format($company->bills()->where('active', true)->count(), 0) }}
