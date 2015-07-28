@@ -36,6 +36,9 @@
                                 Name
                             </th>
                             <th width="10%">
+                                Current
+                            </th>
+                            <th width="10%">
                                 Total Bills
                             </th>
                             <th width="10%">
@@ -51,6 +54,10 @@
                             <tr>
                                 <td>
                                     <a href="{{ URL::route('company.view', $company['id']) }}">{{ $company['name'] }}</a>
+                                </td>
+                                <td class="text-right">
+                                    {{ number_format($company->bills()->where('active', true)->where('paid', false)->count(), 0) }}
+                                    (${{ number_format($company->bills()->where('active', true)->where('paid', false)->sum('amount'), 2) }})
                                 </td>
                                 <td class="text-right">
                                     {{ number_format($company->bills()->where('active', true)->count(), 0) }}
