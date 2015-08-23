@@ -3,8 +3,8 @@
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
+use Session;
 
 class HomeController extends Controller {
 
@@ -15,9 +15,14 @@ class HomeController extends Controller {
 
     public function index()
     {
+        if(intval(Auth::user()->notification_days) <= 0)
+        {
+            Session::flash('notification_warning', true);
+        }
+
         $overdueBills    = \App\Bill::before(date('Y-m-d'), false);
-        $nextUnpaidBills = \App\Bill::next(30, false);
-        $nextPaidBills   = \App\Bill::next(30, true);
+        $nextUnpaidBills = \App\Bill::next(Auth::user()->notification_days, false);
+        $nextPaidBills   = \App\Bill::next(Auth::user()->notification_days, true);
         $lastPaidBills   = \App\Bill::before(date('Y-m-d'), true);
 
         // refactor into REPORTS

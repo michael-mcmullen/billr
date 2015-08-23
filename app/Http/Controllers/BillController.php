@@ -35,8 +35,8 @@ class BillController extends Controller {
     public function index()
     {
         $overdueBills = \App\Bill::before(date('Y-m-d'), false);
-        $nextBills    = \App\Bill::next(30, false);
-        $futureBills  = \App\Bill::after(30, false);
+        $nextBills    = \App\Bill::next(Auth::user()->notification_days, false);
+        $futureBills  = \App\Bill::after(Auth::user()->notification_days, false);
 
         return view('bill.index')
             ->with('overdueBills', $overdueBills)
@@ -148,6 +148,7 @@ class BillController extends Controller {
         // update the bill
         $bill->paid             = true;
         $bill->paid_amount      = $request->input('paid_amount');
+        $bill->paid_date        = $request->input('paid_date');
         $bill->reference_number = $request->input('reference_number');
         $bill->save();
 

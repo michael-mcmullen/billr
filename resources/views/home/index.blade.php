@@ -36,6 +36,17 @@
 <div class="container">
   <div class="row">
 
+    @if(Session::has('notification_warning'))
+        <div class="alert alert-warning">
+            <h4>
+                Warning!
+            </h4>
+            <p>
+                You need to set your <strong>Days before receiving a Notification</strong> in your <a href="{{ URL::route('settings') }}">Settings</a> found under <strong>My Account</strong>.
+            </p>
+        </div>
+    @endif
+
     <!-- Show Phone Version -->
     <div class="visible-xs">
         <!-- OVER DUE -->
@@ -62,7 +73,7 @@
             </div>
             <div class="text">
               <var><a href="{{ URL::route('bill') }}">{{ $nextUnpaidBills->count() }}</a></var>
-              <label class="text-muted">due in 30 days (${{ number_format($nextUnpaidBills->sum('amount'), 2) }})</label>
+              <label class="text-muted">due in {{ Auth::user()->notification_days }} days (${{ number_format($nextUnpaidBills->sum('amount'), 2) }})</label>
             </div>
             <div class="options">
               <a href="{{ URL::route('bill.add') }}" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-plus"></i> Add</a>
@@ -98,7 +109,7 @@
             </div>
             <div class="text">
               <var><a href="{{ URL::route('bill') }}">{{ $nextUnpaidBills->count() }}</a></var>
-              <label class="text-muted">due in 30 days (${{ number_format($nextUnpaidBills->sum('amount'), 2) }})</label>
+              <label class="text-muted">due in {{ Auth::user()->notification_days }} days (${{ number_format($nextUnpaidBills->sum('amount'), 2) }})</label>
             </div>
             <div class="options">
               <a href="{{ URL::route('bill.add') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Bill</a>

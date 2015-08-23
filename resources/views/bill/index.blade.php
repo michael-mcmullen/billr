@@ -34,7 +34,7 @@
         <div class="col-md-12">
             <div class="page-header">
                 <h1>
-                    Bills Due in 30 Days
+                    Bills Due in {{ Auth::user()->notification_days }} Days
                 </h1>
             </div>
         </div>
