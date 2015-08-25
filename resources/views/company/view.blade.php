@@ -78,7 +78,7 @@
                                 Amount
                             </th>
                             <th width="20%">
-                                Received On
+                                Paid On
                             </th>
                             <th width="20%">
                                 Due On
@@ -89,10 +89,12 @@
                         @foreach($company->bills()->where('active', true)->where('paid', true)->orderBy('due')->get() as $bill)
                             <tr>
                                 <td>
-                                    ${{ number_format($bill['amount'], 2) }}
+                                    <a href="{{ URL::route('bill.edit', $bill->id) }}">
+                                        ${{ number_format($bill['amount'], 2) }}
+                                    </a>
                                 </td>
                                 <td class="text-right">
-                                    {{ date('F d, Y', strtotime($bill['received'])) }}
+                                    {{ date('F d, Y', strtotime($bill['paid_date'])) }}
                                 </td>
                                 <td class="text-right">
                                     {{ date('F d, Y', strtotime($bill['due'])) }}
