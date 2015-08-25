@@ -80,7 +80,7 @@
                 });
 
                 $(".select").select2();
-            })
+            });
         </script>
 
         @yield('javascript')
