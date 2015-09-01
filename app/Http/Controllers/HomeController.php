@@ -43,7 +43,8 @@ class HomeController extends Controller {
             ->with('nextUnpaidBills', $nextUnpaidBills)
             ->with('nextPaidBills', $nextPaidBills)
             ->with('lastPaidBills', $lastPaidBills)
-            ->with('report', json_encode($report));
+            ->with('report_months', json_encode($report['months']))
+            ->with('report_amounts', json_encode($report['amounts']));
 
     }
 

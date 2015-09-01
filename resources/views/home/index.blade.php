@@ -4,31 +4,31 @@
     <script>
         // test data for now
         var line_data = {
-            labels: {!! $report !!}.months,
+            labels: {!! $report_months !!},
             datasets: [
                 {
                     label: "Spending",
                     fillColor: "#66c796",
                     strokeColor: "#fff",
-                    data: {!! $report !!}.amounts
+                    data: {!! $report_amounts !!}
                 }
             ]
         }
 
 
         // LINE CHART WIDGET
-            var ctx2 = document.getElementById("myLineChart").getContext("2d");
+        var ctx2 = $("#myLineChart").get(0).getContext("2d");
         ctx2.canvas.height = 50;
-            var myLineChart = new Chart(ctx2).Bar(line_data,
-                    {
-                        responsive:true,
-                        scaleShowGridLines : true,
-                        scaleGridLineColor : "#000",
-                        scaleShowLabels: false,
-                        showScale: false,
-                        datasetStroke : false,
-                        tooltipTemplate: "$<%= value %><%if (label){%> - <%=label%><%}%>"
-                    });
+        var myLineChart = new Chart(ctx2).Bar(line_data,
+        {
+            responsive:true,
+            scaleShowGridLines : true,
+            scaleGridLineColor : "#000",
+            scaleShowLabels: false,
+            showScale: false,
+            datasetStroke : false,
+            tooltipTemplate: "$<%= value %><%if (label){%> - <%=label%><%}%>"
+        });
     </script>
 @stop
 
