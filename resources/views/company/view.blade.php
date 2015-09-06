@@ -74,8 +74,11 @@
                 <table class="table table-hover table-bordered table-striped">
                     <tbody>
                         <tr>
-                            <th width="60%">
+                            <th width="25%">
                                 Amount
+                            </th>
+                            <th width="25%">
+                                Paid
                             </th>
                             <th width="20%">
                                 Paid On
@@ -83,21 +86,40 @@
                             <th width="20%">
                                 Due On
                             </th>
+                            <th width="10%">
+
+                            </th>
                         </tr>
                     </tbody>
                     <tbody>
                         @foreach($company->bills()->where('active', true)->where('paid', true)->orderBy('due')->get() as $bill)
                             <tr>
                                 <td>
-                                    <a href="{{ URL::route('bill.edit', $bill->id) }}">
-                                        ${{ number_format($bill['amount'], 2) }}
-                                    </a>
+                                    ${{ number_format($bill['amount'], 2) }}
+                                </td>
+                                <td>
+                                    ${{ number_format($bill['paid_amount'], 2) }}
+                                    @if(($bill['paid_amount'] - $bill['amount']) > 0)
+                                        <span class="label label-success"><i class="fa fa-plus"></i> ${{ number_format(($bill['paid_amount'] - $bill['amount']), 2) }}</span>
+                                    @else
+                                        @if(($bill['paid_amount'] - $bill['amount']) < 0)
+                                            <span class="label label-danger"><i class="fa fa-minus"></i> ${{ number_format(abs($bill['paid_amount'] - $bill['amount']), 2) }}</span>
+                                        @endif
+                                    @endif
                                 </td>
                                 <td class="text-right">
                                     {{ date('F d, Y', strtotime($bill['paid_date'])) }}
                                 </td>
                                 <td class="text-right">
                                     {{ date('F d, Y', strtotime($bill['due'])) }}
+                                </td>
+                                <td>
+                                    <div class="hidden-xs">
+                                        <a href="{{ URL::route('bill.edit', $bill->id) }}" class="btn btn-primary btn-xs btn-block"><i class="fa fa-pencil"></i> View</a>
+                                    </div>
+                                    <div class="visible-xs">
+                                        <a href="{{ URL::route('bill.edit', $bill->id) }}" class="btn btn-primary btn-xs btn-block"><i class="fa fa-pencil"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

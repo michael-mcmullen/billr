@@ -74,9 +74,13 @@
                                     ${{ number_format($company->bills()->where('active', true)->sum('amount'), 2) }}
                                 </td>
                                 <td>
-                                    <div class="btn-group btn-group-sm btn-group-justified">
-                                        <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add Bill</a>
+                                    <div class="hidden-xs">
+                                        <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add</a>
                                         <a href="{{ URL::route('company.edit', $company['id']) }}" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+                                    </div>
+                                    <div class="visible-xs">
+                                        <a href="{{ URL::route('bill.add', $company['id']) }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+                                        <a href="{{ URL::route('company.edit', $company['id']) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                                     </div>
                                 </td>
                             </tr>
