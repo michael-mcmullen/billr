@@ -31,6 +31,10 @@ body {
   height: 210px;
 }
 
+.footer .footer-copyright {
+    padding-top: 10px;
+}
+
 
 /*******************************************************************************
     AJAX WAITS

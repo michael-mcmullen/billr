@@ -41,12 +41,14 @@
             <div class="container">
                 <div class="clearfix">
                     <div class="footer-logo"><a href="{{ URL::route('home') }}">MyBillr</a></div>
-                        <dl class="footer-nav visible-md visible-lg">
-                            <dt class="nav-title">Links</dt>
-                            <dd class="nav-item"><a href="{{ URL::route('home') }}">Home</a></dd>
-                            <dd class="nav-item"><a href="{{ URL::route('bill') }}">Bills</a></dd>
-                            <dd class="nav-item"><a href="{{ URL::route('company') }}">Companies</a></dd>
-                        </dl>
+                        @if(Auth::check())
+                            <dl class="footer-nav visible-md visible-lg">
+                                <dt class="nav-title">Links</dt>
+                                <dd class="nav-item"><a href="{{ URL::route('home') }}">Home</a></dd>
+                                <dd class="nav-item"><a href="{{ URL::route('bill') }}">Bills</a></dd>
+                                <dd class="nav-item"><a href="{{ URL::route('company') }}">Companies</a></dd>
+                            </dl>
+                        @endif
                         <dl class="footer-nav">
                             <dt class="nav-title">Support</dt>
                             <dd class="nav-item"><a href="mailto:support@mybillr.com">support@mybillr.com</a></dd>

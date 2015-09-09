@@ -1,7 +1,7 @@
-@extends('layouts.blank')
+@extends('layouts.master')
 
 @section('page-title')
-    Login
+    Reset your Password
 @stop
 
 @section('content')
@@ -9,13 +9,19 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8 col-md-offset-2">
 
                 <h1 class="page-header">
                     Reset your Password
                 </h1>
 
                 @include('layouts.partials.messages')
+
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
                 <form method="POST" action="{{ URL::to('password/reset') }}">
                     {!! csrf_field() !!}
@@ -37,25 +43,14 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg">Reset Password</button>
-                        <a href="{{ URL::to('/auth/login') }}" class="btn btn-default">Login</a>
+                        <button type="submit" class="btn btn-success">Reset Password</button>
+                        <div class="pull-right">
+                            <a href="{{ URL::to('/auth/login') }}" class="btn btn-link">Back to Login</a>
+                        </div>
                     </div>
 
                 </form>
 
-            </div>
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Forgot Password?
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            No worries, you can get a new password by clicking the button below.
-                        </p>
-                        <a href="{{ URL::to('password/email') }}" class="btn btn-primary">Forgot Password</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

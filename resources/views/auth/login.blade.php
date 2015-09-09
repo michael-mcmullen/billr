@@ -1,4 +1,4 @@
-@extends('layouts.blank')
+@extends('layouts.master')
 
 @section('page-title')
     Login
@@ -9,58 +9,44 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8 col-md-offset-2">
 
                 <h1 class="page-header">
-                    Login to Billr
+                    Log in to MyBillr
                 </h1>
 
                 @include('layouts.partials.messages')
 
-                <form method="POST" action="{{ URL::to('auth/login') }}">
-                    {!! csrf_field() !!}
+                <div id="login">
+                    <form method="POST" action="{{ URL::to('auth/login') }}">
+                        {!! csrf_field() !!}
 
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}">
-                    </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" class="form-control">
-                    </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="remember">Remember Me</label>
-                        <input type="checkbox" id="remember" name="remember">
-                    </div>
+                        <div class="form-group">
+                            <label for="remember">Remember Me</label>
+                            <input type="checkbox" id="remember" name="remember">
+                        </div>
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg">Login to your account</button>
-                        <a href="{{ URL::to('/auth/register') }}" class="btn btn-default">Register New Account</a>
-                    </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Login to your account</button>
+                            <a href="{{ URL::to('/auth/register') }}" class="btn btn-default">Register New Account</a>
+                            <div class="pull-right">
+                                <a href="{{ URL::to('password/email') }}" class="btn btn-link"><i class="fa fa-question-circle"></i> Forgot Password ?</a>
+                            </div>
+                        </div>
 
-                </form>
+                    </form>
+                </div> <!-- login -->
 
-            </div>
-
-            <div class="col-md-6">
-
-                <h1 class="page-header">
-                    Forgot your Password?
-                </h1>
-
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <p>
-                            If you forgot your password, no problem.
-                        </p>
-                        <p>
-                            Getting a password is very easy. Click the button below and all you need is your email address.
-                        </p>
-                        <a href="{{ URL::to('password/email') }}" class="btn btn-primary">Forgot Password</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

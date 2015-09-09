@@ -1,7 +1,7 @@
-@extends('layouts.blank')
+@extends('layouts.master')
 
 @section('page-title')
-    Login
+    Forgot Password
 @stop
 
 @section('content')
@@ -9,13 +9,19 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8 col-md-offset-2">
 
                 <h1 class="page-header">
-                    Forgot Password for Billr
+                    Forgot Password for MyBillr
                 </h1>
 
                 @include('layouts.partials.messages')
+
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
                 <form method="POST" action="{{ URL::to('password/email') }}">
                     {!! csrf_field() !!}
@@ -26,35 +32,13 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" class="btn btn-success btn-lg btn-block" value="Send Password Reset Link">
+                        <input type="submit" class="btn btn-success" value="Send Password Reset Link">
+                        <div class="pull-right">
+                            <a href="{{ URL::to('auth/login') }}" class="btn btn-link"><i class="fa fa-lock"></i> Login</a>
+                        </div>
                     </div>
 
                 </form>
-
-            </div>
-            
-            <div class="col-md-6">
-
-                <h1 class="page-header">
-                    Remember your password?
-                </h1>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Passwords can be tough. Once in awhile we remember them at the strangest time.
-                        </p>
-                        <p>
-                            If you have remembered your password, you can log in by using the button below.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="{{ URL::to('auth/login') }}" class="btn btn-primary btn-block">Login</a>
-                    </div>
-                </div>
 
             </div>
         </div>

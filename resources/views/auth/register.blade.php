@@ -1,7 +1,7 @@
-@extends('layouts.blank')
+@extends('layouts.master')
 
 @section('page-title')
-    Register
+    Create new Acccount
 @stop
 
 @section('content')
@@ -9,9 +9,9 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8 col-md-offset-2">
                 <h1 class="page-header">
-                    Register new account
+                    Create a MyBillr Account
                 </h1>
 
                 <form method="POST" action="{{ URL::to('auth/register') }}">
@@ -38,18 +38,12 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg">Register</button>
-                        <a href="{{ URL::to('/auth/login') }}" class="btn btn-default">I already have an account</a>
+                        <button type="submit" class="btn btn-success">Register</button>
+                        <div class="pull-right">
+                            <a href="{{ URL::to('/auth/login') }}" class="btn btn-link">I already have an account</a>
+                        </div>
                     </div>
                 </form>
-            </div>
-            <div class="col-md-6">
-                <h1 class="page-header">
-                    Why Sign Up
-                </h1>
-                <p>
-                    Just because ok
-                </p>
             </div>
         </div>
     </div>
