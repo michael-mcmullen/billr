@@ -44,7 +44,7 @@
                                 <a href="#tour">Tour</a>
                             </li>
                             <li class="login-button">
-                                <a href="http://app.mybillr.com/auth/register">Login</a>
+                                <a href="http://app.mybillr.com/auth/login">Login</a>
                             </li>
                         </ul>
                     </div> <!-- collapse-nav -->
