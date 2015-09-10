@@ -1,0 +1,237 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800|Roboto+Slab:400,100,300,700);
+
+body{
+    font-family: "Roboto Slab", sans-serif;
+    font-weight: 300;
+    font-size: 2em;
+    position: relative; /*used for scroll-spy*/
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 100;
+    margin: 0;
+}
+
+/** Header Navigation **/
+header .navbar {
+    padding: 30px 0;
+    transition: all 0.5s ease-out;
+}
+
+header .navbar-default {
+    background-color: transparent;
+    border: 0;
+}
+
+header .navbar-default .navbar-nav a {
+    color: white;
+    padding: 5px 8px;
+}
+
+header .navbar-default .navbar-nav a:hover {
+    color: #37BC9B;
+}
+
+header .navbar-default .navbar-nav .active a {
+    font-weight: 700;
+    color: #FFFFFF;
+    background: none;
+    border-bottom: 4px solid #37BC9B
+}
+
+header .navbar-default .navbar-nav .active a:hover {
+    background: none;
+}
+
+/** Navbar Brand **/
+header .navbar-brand {
+    /*background: url('../images/wisdompetlogo.svg');*/
+    background-repeat: no-repeat;
+    background-position: 15px 0;
+    height: auto;
+}
+
+header .navbar-brand h1 {
+    color: white;
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 400;
+    padding-left: 105px;
+}
+
+header .navbar-brand span.subhead{
+    display: block;
+    font-family: "Roboto Slab", sans-serif;
+    font-size: .6em;
+    font-weight: 100;
+    color: #434A54;
+}
+
+/** Navbar Toggle */
+header .navbar-toggle {
+    background-color: #37BC9B;
+}
+
+header .navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+@media only screen
+and (max-width: 768px) {
+    header .navbar-collapse.in {
+        background-color: rgba(55, 188, 155, 0.5);
+    }
+}
+
+/** header inbody **/
+header .inbody {
+    background: rgba(55, 188, 155, 0.9);
+}
+
+header .navbar.inbody {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+header .navbar.inbody .navbar-nav {
+    padding-top: 10px;
+}
+
+header .inbody .navbar-brand {
+    background-size: 43px;
+    background-position: top left;
+    margin-top: 5px;
+    padding-bottom: 0;
+    margin-left: 10px;
+}
+
+header .inbody .navbar-brand h1 {
+    font-size: 1.1em;
+    padding-left: 38px;
+}
+
+header .inbody .navbar-brand span.subhead {
+    display: none;
+}
+
+header .inbody .navbar-nav a:hover {
+    color: #434A54;
+}
+
+/** Carousel */
+.carousel.fade {
+    opacity: 1;
+}
+
+.carousel.fade .item {
+    transition: opacity 0.7s ease-out;
+    left: 0;
+    opacity: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    display: block;
+}
+
+.carousel.fade .item:first-child {
+    top: auto;
+    opacity: 0;
+    position: relative;
+}
+
+.carousel.fade .item.active {
+    opacity: 1;
+}
+
+.carousel-control {
+    opacity: 0;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+}
+
+.carousel .item {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+}
+
+
+/** PAGE **/
+
+.page {
+    padding: 50px 0;
+}
+
+.page h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/** PAGE -- Features **/
+.feature {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.feature img {
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+.feature h3 {
+    margin-bottom: 10px;
+}
+
+@media only screen
+and (min-width: 450px)
+and (max-width: 768px) {
+    .feature p {
+        padding: 0 20%;
+    }
+}
+
+#features{
+    border-top: 4px solid #37BC9B;
+    background-color: #434A54;
+    color: #FFFFFF;
+}
+
+#tour {
+    background-color: #434A54;
+    color: #FFFFFF;
+}
+
+/** LOGIN BUTTON **/
+.login-button {
+    padding: 0 8px;
+    background-color: #434A54;
+}
+
+.login-button a, .login-button a:visited {
+    color: #37bc9b !important;
+    font-weight: 900;
+}
+
+/** Footer **/
+footer {
+    background-color: #37bc9b;
+    color: #434A54;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer a, footer a:visited {
+    color: white;
+}
+
+.feature a, .feature a:visited {
+    color: #37bc9b;
+}
