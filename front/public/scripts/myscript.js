@@ -85,7 +85,7 @@ function initCarousel(carouselElement) {
     // replace images to background images inside item
     $('#' + carouselElement + ' .item img').each(function(){
         var imgSrc = $(this).attr('src');
-        $(this).parent().css({'background-image': 'url(' + imgSrc + ')'});
+        $(this).parent().css('background-image', 'url(' + imgSrc + ')');
         $(this).remove();
     });
 

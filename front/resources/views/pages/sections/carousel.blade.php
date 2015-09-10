@@ -4,13 +4,13 @@
 
     <div class="carousel-inner fullheight" role="listbox">
         <div class="item">
-            <img src="http://www.placehold.it/800x600" alt="">
+            <img src="http://www.placehold.it/1024x980" alt="">
         </div>
         <div class="item">
-            <img src="http://www.placehold.it/800x600" alt="">
+            <img src="http://www.placehold.it/1024x980" alt="">
         </div>
         <div class="item">
-            <img src="http://www.placehold.it/800x600" alt="">
+            <img src="http://www.placehold.it/1024x980" alt="">
         </div>
     </div> <!-- carousel-inner -->
 

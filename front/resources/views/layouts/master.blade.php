@@ -51,7 +51,7 @@
                 </div> <!-- container -->
             </nav>
 
-            @yield('carousel');
+            @yield('carousel')
         </header>
 
         <div class="main">

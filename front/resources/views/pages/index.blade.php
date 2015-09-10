@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('carousel')
-    @include('pages.sections.carousel');
+    @include('pages.sections.carousel')
 @stop
 
 @section('content')
