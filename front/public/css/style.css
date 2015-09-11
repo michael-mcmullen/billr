@@ -37,7 +37,7 @@ header .navbar-default .navbar-nav a:hover {
 header .navbar-default .navbar-nav .active a {
     font-weight: 700;
     color: #FFFFFF;
-    background: none;
+    background: none !important;
     border-bottom: 4px solid #37BC9B
 }
 
@@ -118,6 +118,10 @@ header .inbody .navbar-brand span.subhead {
 
 header .inbody .navbar-nav a:hover {
     color: #434A54;
+}
+
+header .inbody .navbar-nav .active a {
+    background-color: rgba(55, 188, 155, 0.5);
 }
 
 /** Carousel */
