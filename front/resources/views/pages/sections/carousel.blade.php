@@ -4,13 +4,16 @@
 
     <div class="carousel-inner fullheight" role="listbox">
         <div class="item">
-            <img src="http://www.placehold.it/1024x980" alt="">
+            <img src="{{ asset('images/carousel/overview.jpg') }}" alt="">
         </div>
         <div class="item">
-            <img src="http://www.placehold.it/1024x980" alt="">
+            <img src="{{ asset('images/carousel/bills.jpg') }}" alt="">
         </div>
         <div class="item">
-            <img src="http://www.placehold.it/1024x980" alt="">
+            <img src="{{ asset('images/carousel/notifications.jpg') }}" alt="">
+        </div>
+        <div class="item">
+            <img src="{{ asset('images/carousel/responsive.jpg') }}" alt="">
         </div>
     </div> <!-- carousel-inner -->
 

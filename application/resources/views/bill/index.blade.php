@@ -27,7 +27,7 @@
                                 <td width="5%">
                                 &nbsp;
                                 </td>
-                                <th width="30%">
+                                <th width="45%">
                                     Company
                                 </th>
                                 <th width="20%">
@@ -36,7 +36,7 @@
                                 <th width="10%">
                                     Amount
                                 </th>
-                                <th width="35%">
+                                <th width="20%">
                                     Actions
                                 </th>
                             </tr>
@@ -83,9 +83,13 @@
                                         ${{ number_format($bill->amount, 2) }}
                                     </td>
                                     <td>
-                                        <div class="btn-group btn-group-sm btn-group-justified">
-                                            <a href="{{ URL::route('bill.edit', $bill->id) }}" class="btn btn-primary">Edit Bill</a>
-                                            <a href="{{ URL::route('bill.pay', $bill->id) }}" class="btn btn-success">Pay Bill</a>
+                                        <div class="hidden-xs">
+                                            <a href="{{ URL::route('bill.edit', $bill->id) }}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                                            <a href="{{ URL::route('bill.pay', $bill->id) }}" class="btn btn-success"><i class="fa fa-check"></i> Pay</a>
+                                        </div>
+                                        <div class="visible-xs">
+                                            <a href="{{ URL::route('bill.edit', $bill->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <a href="{{ URL::route('bill.pay', $bill->id) }}" class="btn btn-success btn-sm"><i class="fa fa-check"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -104,9 +108,13 @@
                                         ${{ number_format($bill->amount, 2) }}
                                     </td>
                                     <td>
-                                        <div class="btn-group btn-group-sm btn-group-justified">
-                                            <a href="{{ URL::route('bill.edit', $bill->id) }}" class="btn btn-primary">Edit Bill</a>
-                                            <a href="{{ URL::route('bill.pay', $bill->id) }}" class="btn btn-success">Pay Bill</a>
+                                        <div class="hidden-xs">
+                                            <a href="{{ URL::route('bill.edit', $bill->id) }}" class="btn btn-primary"><i class="fa fa-pencil"></i> Edit</a>
+                                            <a href="{{ URL::route('bill.pay', $bill->id) }}" class="btn btn-success"><i class="fa fa-check"></i> Pay</a>
+                                        </div>
+                                        <div class="visible-xs">
+                                            <a href="{{ URL::route('bill.edit', $bill->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <a href="{{ URL::route('bill.pay', $bill->id) }}" class="btn btn-success btn-sm"><i class="fa fa-check"></i></a>
                                         </div>
                                     </td>
                                 </tr>
