@@ -96,7 +96,7 @@
               <label class="text-muted">overdue bills (${{ number_format($overdueBills->sum('amount'), 2) }})</label>
             </div>
             <div class="options">
-              <a href="{{ URL::route('bill') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-search"></i> View Bills</a>
+                <a href="{{ URL::route('bill') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-search"></i> View Bills</a>
             </div>
           </div>
         </div>
@@ -128,7 +128,11 @@
               <label class="text-muted">companies</label>
             </div>
             <div class="options">
-              <a href="{{ URL::route('company.add') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Company</a>
+                @if(Auth::user()->canCreateCompany())
+                    <a href="{{ URL::route('company.add') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Company</a>
+                @else
+                    <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-credit-card"></i> Subscribe</a>
+                @endif
             </div>
           </div>
         </div>

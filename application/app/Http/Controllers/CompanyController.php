@@ -14,6 +14,7 @@ class CompanyController extends Controller {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('subscription', ['only' => ['add', 'insert']]);
 
         $this->validationRules = [
             'company_name' => 'required|min:2'
