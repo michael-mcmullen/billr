@@ -118,9 +118,11 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="company_id">Company</label>
-                                <span class="pull-right">
-                                    <a href="#" class="btn btn-xs btn-primary" onclick="addCompany(); return false;">New Company</a>
-                                </span>
+                                @if(Auth::user()->canCreateCompany())
+                                    <span class="pull-right">
+                                        <a href="#" class="btn btn-xs btn-primary" onclick="addCompany(); return false;">New Company</a>
+                                    </span>
+                                @endif
                                 {!! Form::select('company_id', Auth::user()->companies()->where('active', true)->orderBy('name')->get()->lists('name', 'id'), old('company_id', $company_id), ['class' => 'form-control select', 'id' => 'company_id']) !!}
                             </div>
                         </div>

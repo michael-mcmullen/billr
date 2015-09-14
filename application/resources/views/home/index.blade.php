@@ -131,7 +131,7 @@
                 @if(Auth::user()->canCreateCompany())
                     <a href="{{ URL::route('company.add') }}" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Add Company</a>
                 @else
-                    <a href="#" class="btn btn-primary btn-lg"><i class="fa fa-credit-card"></i> Subscribe</a>
+                    <a href="{{ URL::route('subscription.subscribe') }}" class="btn btn-primary btn-lg"><i class="fa fa-credit-card"></i> Subscribe</a>
                 @endif
             </div>
           </div>

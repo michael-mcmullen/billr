@@ -49,6 +49,10 @@ body {
     line-height: 1.42857143;
 }
 
+.ajax-hidden{
+    display: none;
+}
+
 
 /*******************************************************************************
     HERO WIDGETS
@@ -195,4 +199,15 @@ body {
 }
 #line-chart-widget .chart-block .change i {
     font-size: .6em;
+}
+
+
+/**
+ * CREDIT CARD
+ */
+#creditcard-error {
+    font-weight: bold;
+    color: #a94442;
+    padding: 8px 10px;
+    background: #f2838f;
 }

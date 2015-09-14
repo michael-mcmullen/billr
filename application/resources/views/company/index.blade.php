@@ -23,7 +23,7 @@
                         @if(Auth::user()->canCreateCompany())
                             <a href="{{ URL::route('company.add') }}" class="btn btn-primary" onclick="switchElement(this, 'ajax-loading');"><i class="fa fa-plus"></i> Add New Company</a>
                         @else
-                            <a href="{{ URL::route('subscribe') }}" class="btn btn-primary"><i class="fa fa-credit-card"></i> Subscribe</a>
+                            <a href="{{ URL::route('subscription.subscribe') }}" class="btn btn-primary"><i class="fa fa-credit-card"></i> Subscribe</a>
                         @endif
 
                         <div id="ajax-loading" class="ajax-wait">
