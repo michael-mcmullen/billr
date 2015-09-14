@@ -58,7 +58,7 @@
                         <li class="list-group-item">SMS and Email Notifications</li>
                     </ul>
                     <div class="panel-footer">
-                        <a class="btn btn-lg btn-block btn-success" href="#">Purchase</a>
+                        <a class="btn btn-lg btn-block btn-success" href="https://app.mybillr.com/subscription/register">Purchase</a>
                     </div>
                 </div>
             </div>
