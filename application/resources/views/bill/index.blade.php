@@ -120,6 +120,17 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right">
+                                    Total Amount
+                                </td>
+                                <td class="text-right text-success">
+                                    $ <strong>{{ number_format($totalPayableBills, 2, '.', ',') }}</strong>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
 

@@ -37,11 +37,13 @@ class BillController extends Controller {
         $overdueBills = \App\Bill::before(date('Y-m-d'), false);
         $nextBills    = \App\Bill::next(Auth::user()->notification_days, false);
         $futureBills  = \App\Bill::after(Auth::user()->notification_days, false);
+        $totalPayableBills = $overdueBills->sum('amount') + $nextBills->sum('amount') + $futureBills->sum('amount');
 
         return view('bill.index')
             ->with('overdueBills', $overdueBills)
             ->with('nextBills', $nextBills)
-            ->with('futureBills', $futureBills);
+            ->with('futureBills', $futureBills)
+            ->with('totalPayableBills', $totalPayableBills);
     }
 
     /**
