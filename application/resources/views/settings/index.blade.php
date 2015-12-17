@@ -17,6 +17,11 @@
         {!! Form::open(['route' => 'settings.update']) !!}
 
             <div class="form-group">
+                <label for="timezone">Timezone</label>
+                {!! Form::select('timezone', $timezones, old('timezone', Auth::user()->timezone), ['class' => 'form-control select', 'id' => 'timezone']) !!}
+            </div>
+
+            <div class="form-group">
                 <label for="phone_number">Phone Number</label>
                 <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="123-456-7890" value="{{ old('phone_number', Auth::user()->phone_number) }}">
             </div>

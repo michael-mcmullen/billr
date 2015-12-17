@@ -21,10 +21,20 @@ class SettingsController extends Controller {
     {
         $providers     = \Config::get('providers');
         $notifications = \Config::get('notifications');
+        $timezoneList  = \DateTimeZone::listIdentifiers();
+        $timezones     = array();
 
-        return view('settings.index')
-            ->with('providers', $providers)
-            ->with('notifications', $notifications);
+        // restructure timezones
+        foreach($timezoneList as $timezone)
+        {
+            $timezones[$timezone] = $timezone;
+        }
+
+        return view('settings.index', [
+            'providers'     => $providers,
+            'notifications' => $notifications,
+            'timezones'     => $timezones,
+        ]);
     }
 
     /**

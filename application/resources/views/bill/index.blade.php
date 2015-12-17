@@ -51,7 +51,7 @@
                                         {{ $bill->company->name }} {{ ($bill->company->nickname) ? '('. $bill->company->nickname .')' : ''  }}
                                     </td>
                                     <td class="text-right">
-                                        {{ $bill->due->diffForHumans() }}
+                                        {{ $bill->due->timezone(Auth::user()->timezone)->diffForHumans() }}
                                     </td>
                                     <td class="text-right">
                                         ${{ number_format($bill->amount, 2) }}
