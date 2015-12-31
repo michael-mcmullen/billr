@@ -83,6 +83,16 @@
                             </div>
                         </div>
 
+                        <!-- BILL RECURRING -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="recurring">Do you expect a similar bill next month?</label>
+                                    {!! Form::select('recurring', [0 => 'No', 1 => 'Yes'], old('recurring', 1), ['class' => 'form-control', 'id' => 'recurring']) !!}
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- PAID DATE -->
                         <div class="row">
                             <div class="col-md-12">

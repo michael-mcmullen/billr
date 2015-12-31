@@ -61,6 +61,7 @@ class BillController extends Controller {
      */
     public function insert(Request $request)
     {
+
         // validate user input
         $this->validate($request, $this->validationRules, $this->validationMessages);
 
@@ -153,6 +154,20 @@ class BillController extends Controller {
         $bill->paid_date        = $request->input('paid_date');
         $bill->reference_number = $request->input('reference_number');
         $bill->save();
+
+        if($request->input('recurring') == 1)
+        {
+            // setup this bill but for next month
+            $newBill                   = new \App\Bill();
+            $newBill->fill($bill->toArray());
+            $newBill->due              = date('Y-m-d', strtotime('+1 month', strtotime($bill->due)));
+            $newBill->paid             = false;
+            $newBill->paid_amount      = 0;
+            $newBill->paid_date        = '';
+            $newBill->reference_number = '';
+            // insert the new bill
+            $newBill->save();
+        }
 
         // tell the user
         Session::flash('success', ['The bill has been paid successfully']);
